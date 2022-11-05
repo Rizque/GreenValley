@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Saimnieciba
 
 
 def saimniecibas(request):
-    return HttpResponse("<h1>Saimniecības</h1>")
+    saimniecibas = Saimnieciba.objects.all()
+    content = {'saimniecibas': saimniecibas}
+
+    return render(request, 'saimniecibas/saimniecibas.html', content)
