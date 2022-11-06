@@ -1,5 +1,24 @@
 {% extends 'main.html' %} {% block content %}
 <h1>SAIMNIECĪBAS!</h1>
-{% for saimnieciba in saimniecibas %}
-<p>{{ saimnieciba.s_nosaukums}}</p>
-{% endfor %} {% endblock %}
+<section id="gallery">
+  <div class="container">
+    <div class="row">
+      {% for saimnieciba in saimniecibas %}
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <img src="{{saimnieciba.s_foto.url}}" alt="" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">{{saimnieciba.s_nosaukums}}</h5>
+            <p class="card-text">{{saimnieciba.s_apraksts}}</p>
+            <a href="" class="btn btn-outline-success btn-sm">Read More</a>
+            <a href="" class="btn btn-outline-danger btn-sm"
+              ><i class="far fa-heart"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock content %}
