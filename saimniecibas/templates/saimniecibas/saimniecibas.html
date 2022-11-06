@@ -1,4 +1,5 @@
+{% extends 'main.html' %} {% block content %}
 <h1>SAIMNIECĪBAS!</h1>
 {% for saimnieciba in saimniecibas %}
-<p>{{ saimnieciba.nosaukums}}</p>
-{% endfor %}
+<p>{{ saimnieciba.s_nosaukums}}</p>
+{% endfor %} {% endblock %}
