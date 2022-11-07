@@ -1,0 +1,6 @@
+{% extends 'main.html' %} {% block content %}
+<h1>Produkcija</h1>
+{% for produkts in produkcija %} {{produkts.p_nosaukums}}
+<!--  -->
+<a href="{% url 'produkts' produkts.id %}">Read More</a>
+{% endfor %} {% endblock content %}

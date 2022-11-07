@@ -10,7 +10,11 @@
           <div class="card-body">
             <h5 class="card-title">{{saimnieciba.s_nosaukums}}</h5>
             <p class="card-text">{{saimnieciba.s_apraksts}}</p>
-            <a href="" class="btn btn-outline-success btn-sm">Read More</a>
+            <a
+              href="{% url 'saimnieciba' saimnieciba.id %}"
+              class="btn btn-outline-success btn-sm"
+              >Read More</a
+            >
             <a href="" class="btn btn-outline-danger btn-sm"
               ><i class="far fa-heart"></i
             ></a>

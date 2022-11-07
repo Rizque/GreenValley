@@ -9,6 +9,11 @@ def sakumlapa(request):
 
 def saimniecibas(request):
     saimniecibas = Saimnieciba.objects.all()
-    content = {'saimniecibas': saimniecibas}
+    context = {'saimniecibas': saimniecibas}
+    return render(request, 'saimniecibas/saimniecibas.html', context)
 
-    return render(request, 'saimniecibas/saimniecibas.html', content)
+
+def saimnieciba(request, pk):
+    saimnieciba_k = Saimnieciba.objects.get(id=pk)
+    context = {'saimnieciba': saimnieciba_k}
+    return render(request, 'saimniecibas/saimnieciba.html', context)
