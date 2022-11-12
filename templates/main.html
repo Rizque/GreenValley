@@ -11,6 +11,13 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
     <title>Green Valley</title>
   </head>
@@ -44,12 +51,22 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'produkcija' %}">Produkcija</a>
             </li>
+            {% if user.is_authenticated %}
+
             <li class="nav-item">
-              <a class="nav-link" href="#">Coaching</a>
+              <a class="nav-link" href="{% url 'profile' %}">Profils</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Analytics</a>
+              <a class="nav-link" href="{% url 'logout' %}">Iziet</a>
             </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}">Reģistrēties</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Pievienoties</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </nav>

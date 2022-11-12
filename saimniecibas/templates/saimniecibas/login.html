@@ -1,0 +1,20 @@
+{% extends 'main.html'%} {% load crispy_forms_tags %} {% block content %}
+<div class="content-section">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Autorizēties</legend>
+      {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Pievienoties</button>
+    </div>
+  </form>
+  <div class="borer-top pt-3">
+    <small class="text-muted"
+      >Neesi reģistrēts lietotājs?
+      <a class="ml-2" href="{% url 'register' %}">Reģistrēties</a></small
+    >
+  </div>
+</div>
+{% endblock content %}
