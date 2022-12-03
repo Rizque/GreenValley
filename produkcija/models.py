@@ -6,7 +6,7 @@ import uuid
 # Create your models here.
 
 
-class Produkts(models.Model):
+class Product(models.Model):
 
     saimieciba = models.ForeignKey(
         Profile, on_delete=models.SET_NULL, null=True, blank=True)

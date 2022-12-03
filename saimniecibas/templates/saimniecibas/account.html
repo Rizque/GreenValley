@@ -1,6 +1,5 @@
 {% extends 'main.html' %} {% block content %}
-<!-- Main Section -->
-
+<a href="{% url 'create-product' %}">Pievienot produktu</a>
 <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit-account' %}"
   ><i class="im im-edit"></i> Edit</a
 >
@@ -8,5 +7,16 @@
 <h2 class="dev__name">{{profile.nosaukums}}</h2>
 <p class="dev__title">{{profile.s_apraksts}}</p>
 <p class="dev__location">Based in {{profile.lokacija}}</p>
-
-{% endblock %}
+{% for product in products %}
+<p>Produkts -</p>
+{{ product.p_nosaukums }}
+<a
+  class="tag tag--pill tag--main settings__btn"
+  href="{% url 'update-product' product.id %}"
+  ><i class="im im-edit"></i> Edit</a
+>
+<a
+  class="tag tag--pill tag--main settings__btn"
+  href="{% url 'delete-product' product.id %}?next=/account"
+  ><i class="im im-x-mark-circle-o"></i> Delete</a
+>{% endfor %} {% endblock %}

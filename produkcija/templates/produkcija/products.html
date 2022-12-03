@@ -1,0 +1,9 @@
+{% extends 'main.html' %} {% block content %}
+<h1>Produkcija</h1>
+
+{% for product in products %}
+<img class="avatar avatar--md" src="{{ product.p_foto.url }}" alt="image" />
+{{product.p_nosaukums}} {{product.p_apraksts}}
+<!--  -->
+<a href="{% url 'product' product.id %}">Read More</a>
+{% endfor %} {% endblock content %}

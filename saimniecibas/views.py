@@ -83,9 +83,9 @@ def userAccount(request):
     profile = request.user.profile
 
     # skills = profile.skill_set.all()
-    # projects = profile.project_set.all()
+    products = profile.product_set.all()
 
-    context = {'profile': profile}
+    context = {'profile': profile, 'products': products}
     return render(request, 'saimniecibas/account.html', context)
 
 
