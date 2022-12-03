@@ -1,0 +1,12 @@
+{% extends 'main.html' %} {% block content %}
+<!-- Main Section -->
+
+<a class="tag tag--pill tag--main settings__btn" href="{% url 'edit-account' %}"
+  ><i class="im im-edit"></i> Edit</a
+>
+<img class="avatar avatar--xl dev__avatar" src="{{profile.s_foto.url}}" />
+<h2 class="dev__name">{{profile.nosaukums}}</h2>
+<p class="dev__title">{{profile.s_apraksts}}</p>
+<p class="dev__location">Based in {{profile.lokacija}}</p>
+
+{% endblock %}

@@ -24,11 +24,22 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('produkcija/', include('produkcija.urls')),
     path('', include('saimniecibas.urls')),
-    path('register/', user_views.register, name="register"),
+    path('reset_password/', auth_views.PasswordResetView.as_view(template_name="reset_password.html"),
+         name="reset_password"),
+
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name='reset_password_sent.html'),
+         name="password_reset_done"),
+
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='reset.html'),
+         name="password_reset_confirm"),
+
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='reset_password_complete.html'),
+         name="password_reset_complete"),
+    # path('register/', user_views.register, name="register"),
     # path('profile/', user_views.profile, name="profile"),
-    path('login/', auth_views.LoginView.as_view(template_name='saimniecibas/login.html'), name="login"),
-    path('logout/', auth_views.LogoutView.as_view(
-        template_name='saimniecibas/sakumlapa.html'), name="logout"),
+    # path('login/', auth_views.LoginView.as_view(template_name='saimniecibas/login.html'), name="login"),
+    # path('logout/', auth_views.LogoutView.as_view(
+    #     template_name='saimniecibas/sakumlapa.html'), name="logout"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

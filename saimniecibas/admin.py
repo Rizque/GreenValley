@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Saimnieciba
+from .models import Profile
 
-admin.site.register(Saimnieciba)
+admin.site.register(Profile)
 
 
 # Register your models here.

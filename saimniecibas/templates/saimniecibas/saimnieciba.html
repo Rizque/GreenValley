@@ -1,13 +1,3 @@
 {% extends 'main.html' %} {% block content %}
 <h1>Saimieciba</h1>
-<p>{{ object.s_nosaukums }}</p>
-<p>{{ object.author }}</p>
-{% if object.author == user %}
-<div>
-  <a href="{% url 'profils' %}">Update</a>
-  <!-- <a
-    href="{% url 'post-delete' object.id %}"
-    >Delete</a
-  > -->
-</div>
-{% endif %} {% endblock content %}
+{{profile.s_nosaukums}} {% endblock content %}

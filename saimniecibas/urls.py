@@ -1,17 +1,19 @@
 from django.urls import path
 from . import views
-from .views import SaimniecibasListView, SaimniecibaDetailView, SaimniecibaUpdateView, redigetProfilu
 
 urlpatterns = [
-    path('', views.sakumlapa, name='sakumlapa'),
-    path('saimniecibas/', SaimniecibasListView.as_view(), name='saimniecibas'),
-    path('saimniecibas/saimnieciba/<str:pk>/',
-         SaimniecibaDetailView.as_view(), name='saimnieciba'),
-    path('saimniecibas/saimnieciba/<str:pk>/rediget/',
-         SaimniecibaUpdateView.as_view(), name='saimnieciba-rediget'),
-    path('profils/', views.lietotajaProfils, name='profils'),
-    path('rediget-profilu/', views.redigetProfilu, name='rediget-profilu'),
+    path('login/', views.loginUser, name='login'),
+    path('logout/', views.logoutUser, name='logout'),
+    path('register/', views.registerUser, name='register'),
+
+    path('', views.profiles, name='profiles'),
+    path('saimnieciba/<str:pk>/', views.userProfile, name='user-profile'),
+    path('account/', views.userAccount, name='account'),
+    path('edit-account/', views.editAccount, name='edit-account'),
 
 
+    # path('saimniecibas/', views.saimniecibas, name='saimniecibas'),
+    # path('saimniecibas/saimnieciba/<str:pk>/',
+    #      views.saimnieciba, name='saimnieciba'),
 
 ]
