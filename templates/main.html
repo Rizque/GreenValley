@@ -5,19 +5,90 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
 
     <title>Green Valley</title>
   </head>
   <body>
-    <a href="{% url 'profiles' %}">Saimniecības</a>
-    <a href="{% url 'products' %}">Produkcija</a>
-    {% if request.user.is_authenticated %}
-    <a href="{% url 'account' %}">Profils</a>
-    <a href="{% url 'logout' %}">Iziet</a>
-    {% else %}
-    <a href="{% url 'register' %}">Reģistrēties</a>
-    <a href="{% url 'login' %}">Pievienoties</a>
-    {% endif %} {% block content %} {% endblock%}
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".dual-collapse2"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"
+      >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'profiles' %}">Green Valley</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profiles' %}">Saimniecības</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}">Produkcija</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Par mums</a>
+          </li>
+
+          <!-- <li class="nav-item dropdown position-static">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Dropdown link
+            </a>
+            <div
+              class="dropdown-menu w-100"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account' %}">Profils</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Iziet</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Ieiet</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Reģistrēties</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    {% block content %} {% endblock%}
   </body>
 </html>

@@ -1,3 +1,28 @@
 {% extends 'main.html' %} {% block content %}
-<h1>Saimieciba</h1>
-{{profile.s_nosaukums}} {% endblock content %}
+<div class="container" style="margin-top: 3rem">
+  <!-- <div class="page-header">
+    <h1>About Me</h1>
+  </div> -->
+  <!--END page-header-->
+  <div class="row" id="features">
+    <div class="col-sm-6 feature">
+      <img
+        src="{{ profile.s_foto.url }}"
+        alt="Web Design"
+        class="img-circle"
+        style="width: 100%"
+      />
+    </div>
+    <!--END feature-->
+
+    <div class="col-sm-6 feature">
+      <h1>{{profile.s_nosaukums}}</h1>
+      <p>{{profile.s_apraksts}}</p>
+      <p>{{profile.lokacija}}</p>
+    </div>
+    <!--END feature-->
+  </div>
+  <!--end features-->
+</div>
+
+{% endblock content %}

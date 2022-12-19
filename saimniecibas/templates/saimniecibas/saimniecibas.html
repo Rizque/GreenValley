@@ -1,23 +1,25 @@
 {% extends 'main.html' %} {%block content%}
-<h1>SAIMNIECĪBAS</h1>
-{% for profile in profiles %}
-<div class="column card">
-  <div class="dev">
-    <a href="{% url 'user-profile' profile.id %}" class="card__body">
-      <div class="dev__profile">
-        <img
-          class="avatar avatar--md"
-          src="{{ profile.s_foto.url }}"
-          alt="image"
-        />
-        <div class="dev__meta">
-          <h3>{{ profile.s_nosaukums }}</h3>
-          <p class="dev__info">{{ profile.s_apraksts|truncatechars:55 }}</p>
+<h1 class="text-center">Saimniecības</h1>
 
-          <h5>{{ profile.lokacija }}</h5>
-        </div>
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 1rem">
+  {% for profile in profiles %}
+  <div class="col">
+    <div class="card h-100">
+      <div>
+        <a href="{% url 'user-profile' profile.id %}" class="card__body">
+          <img src="{{ profile.s_foto.url }}" class="card-img-top" alt="image"
+        /></a>
       </div>
-    </a>
+      <div class="card-body">
+        <h5 class="card-title">{{ profile.s_nosaukums }}</h5>
+        <p class="card-text">{{ profile.s_apraksts|truncatewords_html:30 }}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ profile.lokacija }}</small>
+      </div>
+    </div>
   </div>
+  {% endfor %}
 </div>
-{% endfor %} {% endblock content%}
+
+{% endblock content%}
