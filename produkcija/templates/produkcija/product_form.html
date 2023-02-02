@@ -1,29 +1,14 @@
-{% extends 'main.html' %} {% block content %}
+{% extends "main.html" %}
 
-<!-- Main Section -->
-<main class="formPage my-xl">
-  <div class="content-box">
-    <div class="formWrapper">
-      <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
-      <br />
+{% load crispy_forms_tags %}
 
-      <form class="form" method="POST" enctype="multipart/form-data">
-        {% csrf_token %} {% for field in form %}
-        <!-- Input:Text -->
-        <div class="form__field">
-          <label for="formInput#text">{{field.label}}</label>
-          {{field}}
-        </div>
-        {% endfor %}
-
-        <input
-          class="btn btn--sub btn--lg my-md"
-          type="submit"
-          value="Submit"
-        />
-      </form>
-    </div>
-  </div>
-</main>
-
-{% endblock %}
+{% block content %}
+<div class="container" style="margin-top: 3rem; margin-bottom: 3rem;">
+    <form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		
+		{{ form|crispy }}
+		<button type="submit" class="btn btn-secondary">Saglabāt</button>
+    <form>
+</div>
+{% endblock content %}

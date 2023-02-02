@@ -2,23 +2,26 @@ from django.db import models
 from saimniecibas.models import Profile
 from django.utils import timezone
 import uuid
+from django.urls import reverse
+
 
 # Create your models here.
 
 
 class Product(models.Model):
 
-    saimieciba = models.ForeignKey(
-        Profile, on_delete=models.SET_NULL, null=True, blank=True)
+    saimnieciba = models.ForeignKey(
+        Profile, null=True, blank=True, on_delete=models.SET_NULL)
     p_nosaukums = models.CharField(max_length=200)
     p_apraksts = models.TextField()
-    p_foto = models.ImageField()
+    p_foto = models.ImageField(null=True, blank=True, default='default.jpg')
     cena = models.DecimalField(max_digits=7, decimal_places=2)
     mervienibu_veidi = (
-        ('kg', 'Kilogrami'),
-        ('ml', 'mililitri'),
+        ('kg', 'kilogrami'),
+        ('g', 'grami'),
         ('l', 'litri'),
-        ('gab', 'gabalā')
+        ('ml', 'mililitri'),
+        ('gab', 'gabalā'),
     )
     cenas_mervieniba = models.CharField(
         max_length=100, choices=mervienibu_veidi)

@@ -1,9 +1,9 @@
 {% extends 'main.html' %} {%block content%}
-<h1 class="text-center">Saimniecības</h1>
+<!-- <h1 class="text-center">Saimniecības</h1> -->
 
 <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 1rem">
   {% for profile in profiles %}
-  <div class="col">
+  <div class="col" style="margin-top: 1rem">
     <div class="card h-100">
       <div>
         <a href="{% url 'user-profile' profile.id %}" class="card__body">
@@ -19,6 +19,7 @@
       </div>
     </div>
   </div>
+
   {% endfor %}
 </div>
 

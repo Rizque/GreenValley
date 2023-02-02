@@ -1,9 +1,29 @@
 {% extends 'main.html' %} {% block content %}
-<h1>Produkcija</h1>
+<h1 class="text-center">Produkcija</h1>
 
-{% for product in products %}
-<img class="avatar avatar--md" src="{{ product.p_foto.url }}" alt="image" />
-{{product.p_nosaukums}} {{product.p_apraksts}}
 <!--  -->
-<a href="{% url 'product' product.id %}">Read More</a>
-{% endfor %} {% endblock content %}
+
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 1rem">
+  {% for product in products %}
+  <div class="col" style="margin-top: 1rem">
+    <div class="card h-100">
+      <div>
+        <a href="{% url 'product' product.id %}" class="card__body">
+          <img src="{{ product.p_foto.url }}" class="card-img-top" alt="image"
+        /></a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ product.p_nosaukums }}</h5>
+        <p class="card-text">
+          {{ product.cena }} € / {{ product.cenas_mervieniba }}
+        </p>
+        <p class="card-text">{{ product.saimnieciba.s_nosaukums}}</p>
+      </div>
+      <!-- <div class="card-footer">
+        <small class="text-muted">{{ saimnieciba.lokacija }}</small>
+      </div> -->
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

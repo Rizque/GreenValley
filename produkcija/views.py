@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render, redirect
 from .models import Product
 from django.contrib.auth.decorators import login_required
@@ -7,6 +8,7 @@ from .utils import searchProducts, paginateProducts
 
 def products(request):
     products, search_query = searchProducts(request)
+    products = products.order_by('-p_datums')
     custom_range, products = paginateProducts(request, products, 6)
 
     context = {'products': products,
@@ -53,7 +55,7 @@ def createProduct(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save(commit=False)
-            product.owner = profile
+            product.saimnieciba = profile
             product.save()
             return redirect('account')
 
@@ -81,9 +83,14 @@ def updateProduct(request, pk):
 def deleteProduct(request, pk):
     profile = request.user.profile
     product = profile.product_set.get(id=pk)
-    if request.method == 'POST':
-        product.delete()
-        return redirect('products')
+    product.delete()
+    return redirect('account')
+# def deleteProduct(request, pk):
+#     profile = request.user.profile
+#     product = profile.product_set.get(id=pk)
+#     if request.method == 'POST':
+#         product.delete()
+#         return redirect('account')
 
-    context = {'object': product}
-    return render(request, 'delete_template.html', context)
+#     context = {'object': product}
+#     return render(request, 'delete_template.html', context)

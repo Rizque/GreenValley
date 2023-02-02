@@ -7,7 +7,6 @@
   <div class="card">
     <div class="auth__header text-center">
       <h3>Register an Account</h3>
-      <p>Create a new developer account</p>
     </div>
 
     <form action="{% url 'register' %}" method="POST" class="form auth__form">
@@ -35,11 +34,11 @@
   </div>
 </div>
 {% else %}
+
 <div class="auth">
   <div class="card">
     <div class="auth__header text-center">
       <h3>Account Login</h3>
-      <p>Hello Developer, Welcome Back!</p>
     </div>
 
     <form method="POST" action="" class="form auth__form">

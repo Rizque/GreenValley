@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 
+from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
+
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
@@ -24,7 +28,15 @@ class ProfileForm(ModelForm):
     class Meta:
         model = Profile
         fields = '__all__'
-        exclude = ['user']
+        exclude = ['user', 'username', 's_datums']
+        labels = {
+            's_nosaukums': 'Saimniecības nosaukums:',
+            's_apraksts': 'Apraksts:',
+            's_foto': 'Fotogrāfija:',
+            'email': 'Epasts:',
+            'talrunis': 'Tālrunis:',
+            'lokacija': 'Lokācija:',
+        }
 
         # fields = ['name', 'email', 'username', 'location',
         #           'bio', 'short_intro', 'profile_image', 'social_github', 'social_linkedin', 'social_twitter', 'social_youtube', 'social_website']

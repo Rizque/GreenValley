@@ -4,6 +4,7 @@ from .models import Profile
 from .forms import CustomUserCreationForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.views.generic import UpdateView
 
 from django.contrib.auth import login, authenticate, logout
 

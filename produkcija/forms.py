@@ -8,6 +8,16 @@ class ProductForm(ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
+        exclude = ['saimnieciba', 'p_datums']
+        labels = {
+            'p_nosaukums': 'Produkta nosaukums:',
+            'p_apraksts': 'Apraksts:',
+            'p_foto': 'Fotogrāfija:',
+            'cena': 'Cena (EUR):',
+            'cena_mervieniba': 'Cenas mērvienība:',
+            'lokacija': 'Lokācija:',
+        }
+
         # fields = ['title', 'featured_image', 'description',
         #           'demo_link', 'source_link', 'tags']
         # widgets = {
