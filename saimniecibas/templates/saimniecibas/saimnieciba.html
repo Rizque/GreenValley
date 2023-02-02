@@ -31,7 +31,7 @@
   <div class="col" style="margin-top: 1rem">
     <div class="card h-100">
       <div>
-        <a href="#" class="card__body">
+        <a href="{% url 'product' product.id %}" class="card__body">
           <img src="{{ product.p_foto.url }}" class="card-img-top" alt="image"
         /></a>
       </div>

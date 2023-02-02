@@ -92,6 +92,7 @@ def userAccount(request):
 
 def profiles(request):
     profiles, search_query = searchProfiles(request)
+    profiles = profiles.order_by('-s_datums')
 
     custom_range, profiles = paginateProfiles(request, profiles, 6)
     context = {'profiles': profiles, 'search_query': search_query,

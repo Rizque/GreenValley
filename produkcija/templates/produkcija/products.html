@@ -1,7 +1,4 @@
 {% extends 'main.html' %} {% block content %}
-<h1 class="text-center">Produkcija</h1>
-
-<!--  -->
 
 <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 1rem">
   {% for product in products %}
@@ -17,7 +14,14 @@
         <p class="card-text">
           {{ product.cena }} € / {{ product.cenas_mervieniba }}
         </p>
-        <p class="card-text">{{ product.saimnieciba.s_nosaukums}}</p>
+        <a
+          style="color: black"
+          href="{% url 'user-profile' product.saimnieciba.id %}"
+        >
+          <p style="font-size: 20px" class="card-text">
+            {{ product.saimnieciba.s_nosaukums}}
+          </p></a
+        >
       </div>
       <!-- <div class="card-footer">
         <small class="text-muted">{{ saimnieciba.lokacija }}</small>

@@ -13,12 +13,14 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        # labels = {
-        #     'first_name': 'Name',
-        # }
 
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+
+        self.fields['username'].label = 'Lietotājvārds:'
+        self.fields['email'].label = 'E-pasts:'
+        self.fields['password1'].label = 'Parole:'
+        self.fields['password2'].label = 'Parole vēlreiz:'
 
         for name, field in self.fields.items():
             field.widget.attrs.update({'class': 'input'})
