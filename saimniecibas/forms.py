@@ -4,10 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 
-from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
-
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
@@ -40,8 +36,6 @@ class ProfileForm(ModelForm):
             'lokacija': 'Lokācija:',
         }
 
-        # fields = ['name', 'email', 'username', 'location',
-        #           'bio', 'short_intro', 'profile_image', 'social_github', 'social_linkedin', 'social_twitter', 'social_youtube', 'social_website']
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
 

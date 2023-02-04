@@ -4,10 +4,7 @@ from .models import Profile
 from .forms import CustomUserCreationForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.views.generic import UpdateView
-
 from django.contrib.auth import login, authenticate, logout
-
 from .utils import searchProfiles, paginateProfiles
 from django.db.models import Q
 
@@ -87,8 +84,6 @@ def editAccount(request):
 @login_required(login_url='login')
 def userAccount(request):
     profile = request.user.profile
-
-    # skills = profile.skill_set.all()
     products = profile.product_set.all()
 
     context = {'profile': profile, 'products': products}
@@ -102,7 +97,6 @@ def profiles(request):
     custom_range, profiles = paginateProfiles(request, profiles, 6)
     context = {'profiles': profiles, 'search_query': search_query,
                'custom_range': custom_range}
-    # ordering = ['-s_datums']
     return render(request, 'saimniecibas/saimniecibas.html', context)
 
 

@@ -35,12 +35,6 @@ def searchProducts(request):
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
 
-    # tags = Tag.objects.filter(name__icontains=search_query)
-
     produkti = Product.objects.distinct().filter(
-        Q(p_nosaukums__icontains=search_query)
-        # Q(description__icontains=search_query) |
-        # Q(owner__name__icontains=search_query) |
-        # Q(tags__in=tags)
-    )
+        Q(p_nosaukums__icontains=search_query))
     return produkti, search_query
