@@ -14,7 +14,7 @@ class Profile(models.Model):
     s_nosaukums = models.CharField(max_length=200)
     s_apraksts = models.TextField()
     s_foto = models.ImageField(
-        null=True, blank=True, default='default.jpg',)
+        null=True, blank=False, default='defaultx.jpg',)
     email = models.EmailField(max_length=500, blank=True, null=True)
     talrunis = models.CharField(max_length=8)
     lokacija = models.CharField(max_length=200)

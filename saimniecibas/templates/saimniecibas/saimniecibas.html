@@ -1,6 +1,29 @@
 {% extends 'main.html' %} {%block content%}
 <!-- <h1 class="text-center">Saimniecības</h1> -->
 
+<form
+  id="searchForm"
+  class="form d-flex justify-content-center mt-4"
+  action="{% url 'profiles' %}"
+  method="get"
+>
+  <div class="input-group input-group-lg" style="width: 40%">
+    <input
+      class="form-control"
+      id="formInput#search"
+      type="text"
+      name="search_query"
+      placeholder="Meklēt saimniecību"
+      value="{{search_query}}"
+    />
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+
 <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 1rem">
   {% for profile in profiles %}
   <div class="col" style="margin-top: 1rem">
@@ -11,7 +34,9 @@
         /></a>
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{ profile.s_nosaukums }}</h5>
+        <a href="{% url 'user-profile' profile.id %}" style="color: black"
+          ><h5 class="card-title">{{ profile.s_nosaukums }}</h5></a
+        >
         <p class="card-text">{{ profile.s_apraksts|truncatewords_html:30 }}</p>
       </div>
       <div class="card-footer">
@@ -23,4 +48,5 @@
   {% endfor %}
 </div>
 
+{% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
 {% endblock content%}

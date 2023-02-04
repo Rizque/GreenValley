@@ -47,8 +47,12 @@
         /></a>
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{ product.p_nosaukums }}</h5>
-        <p class="card-text">{{ product.cena }} Eur {{product.mervieniba}}</p>
+        <a href="{% url 'product' product.id %}" style="color: black"
+          ><h5 class="card-title">{{ product.p_nosaukums }}</h5></a
+        >
+        <p class="card-text">
+          {{ product.cena }} € / {{ product.cenas_mervieniba}}
+        </p>
         <button type="button" class="btn btn-secondary">
           <a style="color: white" href="{% url 'update-product' product.id %}"
             >Rediģēt</a
@@ -109,7 +113,7 @@
                         >
                           {% csrf_token %}
                           <button type="submit" class="btn btn-danger">
-                            Delete Product
+                            Dzēst produktu
                           </button>
                         </form>
                       </div>

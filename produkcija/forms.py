@@ -14,8 +14,9 @@ class ProductForm(ModelForm):
             'p_apraksts': 'Apraksts:',
             'p_foto': 'Fotogrāfija:',
             'cena': 'Cena (EUR):',
-            'cena_mervieniba': 'Cenas mērvienība:',
-            'lokacija': 'Lokācija:',
+            'cenas_mervieniba': 'Cenas mērvienība:',
+            'termins': 'Realizācijas termiņš:',
+
         }
 
         # fields = ['title', 'featured_image', 'description',

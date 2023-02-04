@@ -1,49 +1,23 @@
-{% extends 'main.html' %}
-{% block content %}
+{% extends 'main.html' %} {% block content %}
 
-<style>
-    input[type='text'],
-    input[type='email'],
-    input[type='password']{
-    min-width: 24rem;
-    width: 100%;
-    padding: 1.2rem 1.5rem;
-    border-radius: 0.5rem;
-    border: 2px solid var(--color-light);
-    transition: all 0.3s ease-in-out;
-    background-color: var(--color-bg);
-    }
+<main
+  class="formPage my-xl mt-4 d-flex justify-content-center align-items-center"
+>
+  <div class="content-box">
+    <div class="formWrapper">
+      <h3 class="text-center">Ievadi jauno paroli</h3>
+      <br />
 
-    input[type='text']:focus,
-    input[type='email']:focus,
-    input[type='password']:focus,
-    input[type='text']:active,
-    input[type='email']:active,
-    input[type='password']:active {
-    outline: none;
-    border: 2px solid var(--color-main);
-    }
-</style>
+      <form class="form" method="POST">
+        {% csrf_token %} {{form.as_p}}
 
-<main class="formPage my-xl">
-    <div class="content-box">
-      <div class="formWrapper">
-        <h3>Enter new password</h3>
-
-        <p>Pleace enter your new password twice so we can vertify you typed it in correctly</p>
-        <br />
-
-        <form class="form" method="POST">
-            {% csrf_token %}
-            {{form.as_p}}
-          
-          <input
-            class="btn btn--sub btn--lg my-md"
-            type="submit"
-            value="Submit"
-          />
-        </form>
-      </div>
+        <input
+          class="btn btn--sub btn-primary my-md"
+          type="submit"
+          value="Apstiprināt"
+        />
+      </form>
     </div>
-  </main>
+  </div>
+</main>
 {% endblock content %}

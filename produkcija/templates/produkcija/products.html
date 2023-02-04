@@ -1,5 +1,26 @@
 {% extends 'main.html' %} {% block content %}
-
+<form
+  id="searchForm"
+  class="form d-flex justify-content-center mt-4"
+  action="{% url 'products' %}"
+  method="get"
+>
+  <div class="input-group input-group-lg" style="width: 40%">
+    <input
+      class="form-control"
+      id="formInput#search"
+      type="text"
+      name="search_query"
+      placeholder="Meklēt produktu"
+      value="{{search_query}}"
+    />
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
 <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 1rem">
   {% for product in products %}
   <div class="col" style="margin-top: 1rem">
@@ -10,7 +31,10 @@
         /></a>
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{ product.p_nosaukums }}</h5>
+        <a href="{% url 'product' product.id %}" style="color: black"
+          ><h5 class="card-title">{{ product.p_nosaukums }}</h5></a
+        >
+
         <p class="card-text">
           {{ product.cena }} € / {{ product.cenas_mervieniba }}
         </p>
@@ -30,4 +54,5 @@
   </div>
   {% endfor %}
 </div>
+{% include 'pagination.html' with queryset=products custom_range=custom_range %}
 {% endblock content %}

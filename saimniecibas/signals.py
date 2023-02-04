@@ -15,8 +15,6 @@ def createProfile(sender, instance, created, **kwargs):
         user = instance
         profile = Profile.objects.create(
             user=user, username=user.username, email=user.email, )
-        subject = 'Welcome to Devsearch'
-        message = 'We are glad you are here!'
 
         # send_mail(
         #     subject,

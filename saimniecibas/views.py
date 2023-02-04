@@ -9,6 +9,11 @@ from django.views.generic import UpdateView
 from django.contrib.auth import login, authenticate, logout
 
 from .utils import searchProfiles, paginateProfiles
+from django.db.models import Q
+
+
+def frontPage(request):
+    return render(request, 'saimniecibas/sakumlapa.html')
 
 
 def loginUser(request):
@@ -103,42 +108,17 @@ def profiles(request):
 
 def userProfile(request, pk):
     profile = Profile.objects.get(id=pk)
-
-    # topSkills = profile.skill_set.exclude(description__exact='')
-    # otherSkills = profile.skill_set.filter(description='')
-
     context = {'profile': profile}
     return render(request, 'saimniecibas/saimnieciba.html', context)
-# def sakumlapa(request):
-#     return render(request, 'saimniecibas/sakumlapa.html')
 
 
-# def saimniecibas(request):
-#     saimniecibas = Profile.objects.all()
-#     context = {'saimniecibas': saimniecibas}
-#     return render(request, 'saimniecibas/saimniecibas.html', context)
+def searchProfiles(request):
+    search_query = ''
 
+    if request.GET.get('search_query'):
+        search_query = request.GET.get('search_query')
 
-# def saimnieciba(request, pk):
-#     saimnieciba_k = Saimnieciba.objects.get(id=pk)
-#     context = {'saimnieciba': saimnieciba_k}
-#     return render(request, 'saimniecibas/saimnieciba.html', context)
-
-
-# def register(request):
-#     if request.method == 'POST':
-#         form = UserRegisterForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             messages.success(
-#                 request, f'Your account has been created! You are now able to log in')
-#             return redirect('login')
-#     else:
-#         form = UserRegisterForm()
-#     return render(request, 'saimniecibas/register.html', {'form': form})
-
-
-# @login_required
-# def profile(request):
-#     return render(request, 'saimniecibas/profile.html')
+    profiles = Profile.objects.distinct().filter(
+        Q(s_nosaukums__icontains=search_query) |
+        Q(lokacija__icontains=search_query))
+    return profiles, search_query

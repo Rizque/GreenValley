@@ -37,7 +37,9 @@
       </div>
       <div class="card-body">
         <h5 class="card-title">{{ product.p_nosaukums }}</h5>
-        <p class="card-text">{{ product.cena }} Eur {{product.mervieniba}}</p>
+        <p class="card-text">
+          {{ product.cena }} € / {{ product.cenas_mervieniba}}
+        </p>
         <p class="card-text">{{ product.saimnieciba.s_nosaukums}}</p>
       </div>
       <!-- <div class="card-footer">

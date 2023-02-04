@@ -2,10 +2,6 @@ from django.db import models
 from saimniecibas.models import Profile
 from django.utils import timezone
 import uuid
-from django.urls import reverse
-
-
-# Create your models here.
 
 
 class Product(models.Model):
@@ -14,7 +10,7 @@ class Product(models.Model):
         Profile, null=True, blank=True, on_delete=models.SET_NULL)
     p_nosaukums = models.CharField(max_length=200)
     p_apraksts = models.TextField()
-    p_foto = models.ImageField(null=True, blank=True, default='default.jpg')
+    p_foto = models.ImageField(null=True, blank=False)
     cena = models.DecimalField(max_digits=7, decimal_places=2)
     mervienibu_veidi = (
         ('kg', 'kilogrami'),
