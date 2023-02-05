@@ -18,9 +18,9 @@
     <div class="col-sm-5 feature">
       <h1>{{profile.s_nosaukums}}</h1>
       <p>{{profile.s_apraksts}}</p>
-      <p>{{profile.talrunis}}</p>
-      <p>{{profile.email}}</p>
-      <p>{{profile.lokacija}}</p>
+      <p>Tālrunis: {{profile.talrunis}}</p>
+      <p>E-pasts: {{profile.email}}</p>
+      <p>Lokācija: {{profile.lokacija}}</p>
     </div>
     <!--END feature-->
   </div>
@@ -42,9 +42,6 @@
         </p>
         <p class="card-text">{{ product.saimnieciba.s_nosaukums}}</p>
       </div>
-      <!-- <div class="card-footer">
-        <small class="text-muted">{{ saimnieciba.lokacija }}</small>
-      </div> -->
     </div>
   </div>
   {% endfor %}

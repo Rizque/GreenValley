@@ -1,3 +1,98 @@
 {% extends 'main.html' %} {%block content%}
-<h1>SĀKUMLAPA</h1>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #faf5ef;
+    }
+    h1 {
+      color: white;
+      font-size: 7em;
+      text-align: center;
+    }
+    .hero-image {
+      background-image: url(images/background.jpg);
+      opacity: 0.9;
+      background-color: rgb(102, 102, 102);
+      height: 700px;
+      background-blend-mode: multiply;
+
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    .hero-text {
+      text-align: center;
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+    }
+
+    .teksts {
+      /* background: #e1e5ea; */
+      padding: 15px;
+      margin: 40px;
+      font-size: 22px;
+    }
+
+    .teksts img {
+      width: 50%;
+      float: right;
+      margin: 0;
+      margin-left: 30px;
+      margin-bottom: 20px;
+    }
+    h3 {
+      margin: 0;
+      margin: 2rem 0 1rem 0;
+      text-align: center;
+    }
+    @media only screen and (max-width: 768px) {
+      .teksts img {
+        width: 100%;
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-size: 5em;
+      }
+      .teksts {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Green Valley</h1>
+  </div>
+</div>
+<div class="teksts">
+  <img src="images/image1.jpg" />
+  <h2 style="text-align: center">Green Valley</h2>
+  <p style="text-align: center">
+    Vietne vietējo ražotāju produktu vai paklapojumu reklamēšanai un sasaistei
+    ar potenciālo klientu.
+  </p>
+  <h3>Iespējas</h3>
+  <p>
+    &#x2022; Publicēt piedāvāto produktu vai pakalpojumu vietnē, ko redzēs citi
+    tās lietotāji, un ieineteresētās personas spēs ar jums kontaktēties vai pat
+    norēķināties. <br />
+    &#x2022; Atrast vietnē vietējo ražotāju “labumus” un iegādāties tos.
+  </p>
+  <h3>Potenciālie lietotāji</h3>
+  <p>
+    &#x2022; Ekoloģiska dzīvesveida un vietējo ražotāju atbalstītāji <br />
+    &#x2022; Cilvēki, kam nepieciešams attiecīgais pakalpojums vai produkts
+  </p>
+</div>
 {% endblock content%}

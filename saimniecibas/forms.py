@@ -31,7 +31,7 @@ class ProfileForm(ModelForm):
             's_nosaukums': 'Saimniecības nosaukums:',
             's_apraksts': 'Apraksts:',
             's_foto': 'Fotogrāfija:',
-            'email': 'Epasts:',
+            'email': 'E-pasts:',
             'talrunis': 'Tālrunis:',
             'lokacija': 'Lokācija:',
         }
