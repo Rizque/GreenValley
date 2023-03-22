@@ -5,9 +5,7 @@ import uuid
 
 
 class Product(models.Model):
-
-    saimnieciba = models.ForeignKey(
-        Profile, null=True, blank=True, on_delete=models.SET_NULL)
+    saimnieciba = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
     p_nosaukums = models.CharField(max_length=200)
     p_apraksts = models.TextField()
     p_foto = models.ImageField(null=True, blank=False)
@@ -19,10 +17,8 @@ class Product(models.Model):
         ('ml', 'mililitri'),
         ('gab', 'gabalā'),
     )
-    cenas_mervieniba = models.CharField(
-        max_length=100, choices=mervienibu_veidi)
+    cenas_mervieniba = models.CharField(max_length=100, choices=mervienibu_veidi)
     p_datums = models.DateTimeField(default=timezone.now)
-
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
 

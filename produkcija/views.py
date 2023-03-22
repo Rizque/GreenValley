@@ -25,7 +25,6 @@ def product(request, pk):
 def createProduct(request):
     profile = request.user.profile
     form = ProductForm()
-
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -33,7 +32,6 @@ def createProduct(request):
             product.saimnieciba = profile
             product.save()
             return redirect('account')
-
     context = {'form': form}
     return render(request, 'produkcija/product_form.html', context)
 

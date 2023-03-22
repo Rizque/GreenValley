@@ -85,7 +85,6 @@ def editAccount(request):
 def userAccount(request):
     profile = request.user.profile
     products = profile.product_set.all()
-
     context = {'profile': profile, 'products': products}
     return render(request, 'saimniecibas/account.html', context)
 
@@ -93,7 +92,6 @@ def userAccount(request):
 def profiles(request):
     profiles, search_query = searchProfiles(request)
     profiles = profiles.order_by('-s_datums')
-
     custom_range, profiles = paginateProfiles(request, profiles, 6)
     context = {'profiles': profiles, 'search_query': search_query,
                'custom_range': custom_range}
