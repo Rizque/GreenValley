@@ -17,3 +17,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.s_nosaukums
+    
+    class Meta:
+        db_table = 'saimniecibas_profile'
