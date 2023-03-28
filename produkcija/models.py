@@ -5,6 +5,7 @@ import uuid
 
 
 class Product(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     saimnieciba = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
     p_nosaukums = models.CharField(max_length=200)
     p_apraksts = models.TextField()
