@@ -28,7 +28,8 @@ SECRET_KEY = 'django-insecure-kqg)8u(*9#(ukblf+8)vvjnl*z)oj%udq@uss#p#+1py^a2w)5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['greenvalley.herokuapp.com', '127.0.0.1', ]
+ALLOWED_HOSTS = ['greenvalley.herokuapp.com',
+                 '127.0.0.1', 'greenvalley.pvg.edu.lv']
 
 
 # Application definition
@@ -85,7 +86,6 @@ WSGI_APPLICATION = 'green_valley.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
 
 
 DATABASES = {
