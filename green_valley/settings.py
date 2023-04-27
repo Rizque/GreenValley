@@ -29,7 +29,10 @@ SECRET_KEY = 'django-insecure-kqg)8u(*9#(ukblf+8)vvjnl*z)oj%udq@uss#p#+1py^a2w)5
 DEBUG = True
 
 ALLOWED_HOSTS = ['greenvalley.herokuapp.com',
-                 '127.0.0.1', 'greenvalley.pvg.edu.lv']
+                 '127.0.0.1', 'greenvalley.pvg.edu.lv', 'https://greenvalley.pvg.edu.lv/']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://greenvalley.pvg.edu.lv/', 'https://*.127.0.0.1']
 
 
 # Application definition
