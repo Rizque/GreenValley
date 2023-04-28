@@ -28,10 +28,10 @@ SECRET_KEY = 'django-insecure-kqg)8u(*9#(ukblf+8)vvjnl*z)oj%udq@uss#p#+1py^a2w)5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['greenvalley.herokuapp.com', '10.20.30.18',
-                 '127.0.0.1', 'greenvalley.pvg.edu.lv', 'https://greenvalley.pvg.edu.lv']
+ALLOWED_HOSTS = ['greenvalley.herokuapp.com', 'https://10.20.30.18',
+                 'https://127.0.0.1', 'greenvalley.pvg.edu.lv', 'https://greenvalley.pvg.edu.lv']
 
-CSRF_TRUSTED_ORIGINS = ['10.20.30.18', '127.0.0.1',
+CSRF_TRUSTED_ORIGINS = ['https://10.20.30.18', 'https://127.0.0.1',
                         'https://greenvalley.pvg.edu.lv', 'https://*.127.0.0.1']
 
 
