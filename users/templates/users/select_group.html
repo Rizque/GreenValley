@@ -1,0 +1,9 @@
+<h2>Select Group</h2>
+<form method="post" action="{% url 'select-group' %}">
+  {% csrf_token %}
+  <input type="hidden" name="user_id" value="{{ user_id }}" />
+  <div>
+    <button type="submit" name="group" value="client">Klients</button>
+    <button type="submit" name="group" value="farm">Saimniecība</button>
+  </div>
+</form>

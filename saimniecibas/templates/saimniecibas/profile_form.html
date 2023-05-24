@@ -1,8 +1,0 @@
-{% extends "main.html" %} {% load crispy_forms_tags %} {% block content %}
-<div class="container" style="margin-top: 3rem; margin-bottom: 3rem">
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %} {{ form|crispy }}
-    <button type="submit" class="btn btn-secondary">Saglabāt izmaiņas</button>
-  </form>
-</div>
-{% endblock content %}
