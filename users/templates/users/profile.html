@@ -1,3 +1,16 @@
 {% extends 'main.html' %} {% block content %}
 <h1>Profils</h1>
-{% endblock %}
+<p>{{profile.username}}</p>
+{% if page == 'farm' %}
+<h2>Saimniecība</h2>
+
+<button type="button">
+  <a href="{% url 'add-product' %}">Pievienot produktu</a>
+</button>
+{% for product in profile.product_set.all reversed %} {{ product.name }}
+<a href="{% url 'update-product' product.product_id %}">Rediģēt</a>
+<a href="{% url 'delete-product' product.product_id %}">Dzēst</a>
+{% endfor %} {% else %}
+<h2>Klients</h2>
+
+{% endif %} {% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'main.html' %} {% block content %}
+<h1>Saimmiecības</h1>
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 1rem">
+  {% for farm in farms %}
+  <a href="{% url 'farm' farm.id %}"><h5>{{ farm.name }}</h5></a>
+  {% endfor %}
+</div>
+{% endblock %}

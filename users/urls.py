@@ -6,6 +6,10 @@ urlpatterns = [
     path('register/', views.registerUser, name='register'),
     path('select-group/', views.selectGroup, name='select-group'),
     path('profile/', views.profile, name='profile'),
+    path('farms/', views.farms, name='farms'),
+    path('farm/<str:pk>/', views.farm, name='farm'),
+
+
 
     path('', views.frontpage, name='frontpage'),
     path('home/', views.home, name='home'),

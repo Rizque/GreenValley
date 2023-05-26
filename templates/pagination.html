@@ -1,0 +1,40 @@
+{% if queryset.has_other_pages %}
+
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    {% if queryset.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ queryset.previous_page_number }}"
+        >&laquo;</a
+      >
+    </li>
+    {% endif %} {% for page in custom_range %} {% if page == queryset.number %}
+    <li class="page-item active">
+      <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+    </li>
+    {% endif %} {% endfor %} {% if queryset.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ queryset.next_page_number }}"
+        >&raquo;</a
+      >
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+<style>
+  .page-link {
+    background-color: white;
+    color: grey;
+  }
+
+  .page-item.active .page-link {
+    background-color: #343a40;
+    border-color: #343a40;
+    color: white;
+  }
+</style>
+{% endif %}

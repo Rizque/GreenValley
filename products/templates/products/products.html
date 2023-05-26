@@ -1,0 +1,3 @@
+{% extends 'main.html' %} {% block content %} {% for product in products %}
+<a href="{% url 'product' product.product_id %}"><h5>{{ product.name }}</h5></a
+>{% endfor %} {% endblock content %}

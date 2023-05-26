@@ -1,10 +1,13 @@
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.models import User, Group
 from .forms import UserCreationForm, ProfileForm
-from .models import Profile
+from .models import Profile, Farm
+from .utils import searchFarms, paginateFarms
+
 
 from .decorators import unauthenticated_user
 
@@ -85,9 +88,17 @@ def frontpage(request):
 
 @login_required(login_url='login')
 def profile(request):
-    profile = request.user.profile
 
-    context = {'profile': profile, }
+    profile = request.user.profile
+    group = request.user.groups.all()[0].name
+    print(group)
+    page = None
+    if group == 'farm':
+        page = 'farm'
+    elif group == 'client':
+        page = 'client'
+
+    context = {'profile': profile, 'page': page}
     return render(request, 'users/profile.html', context)
 
 
@@ -100,3 +111,18 @@ def home(request):
     else:
         user = request.user
         return render(request, 'users/select_group.html', {'user_id': user.id})
+
+
+def farms(request):
+    farms, search_query = searchFarms(request)
+    farms = farms.order_by('-date')
+    custom_range, farms = paginateFarms(request, farms, 6)
+    context = {'farms': farms, 'search_query': search_query,
+               'custom_range': custom_range}
+    return render(request, 'users/farms.html', context)
+
+
+def farm(request, pk):
+    farm = Farm.objects.get(id=pk)
+    context = {'farm': farm}
+    return render(request, 'users/farm.html', context)
