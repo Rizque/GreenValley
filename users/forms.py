@@ -13,8 +13,13 @@ class UserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)
 
-        # for name, field in self.fields.items():
-        #     field.widget.attrs.update({'class': 'input'})
+        self.fields['username'].label = 'Lietotājvārds:'
+        self.fields['email'].label = 'E-pasts:'
+        self.fields['password1'].label = 'Parole:'
+        self.fields['password2'].label = 'Parole vēlreiz:'
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'input'})
 
 
 class ProfileForm(ModelForm):

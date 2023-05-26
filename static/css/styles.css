@@ -1,0 +1,83 @@
+body {
+  font-family: "Inter", sans-serif;
+  background: #faf5ef;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  padding: 0.5rem 1rem;
+}
+
+footer {
+  padding: 1rem;
+}
+
+/* frontpage.css */
+h1 {
+  color: white;
+  font-size: 7em;
+  text-align: center;
+}
+
+.hero-image {
+  background-image: url(../images/background.jpg);
+  opacity: 0.9;
+  background-color: rgb(102, 102, 102);
+  height: 700px;
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.teksts {
+  padding: 15px;
+  margin: 30px;
+  font-size: 22px;
+}
+
+.img-fluid {
+  margin: 20px 30px;
+}
+
+h2 {
+  text-align: center;
+  margin: 1rem;
+}
+
+h3 {
+  margin: 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .teksts img {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 5em;
+  }
+  .teksts {
+    font-size: 18px;
+  }
+}

@@ -1,6 +1,7 @@
 {% extends 'main.html' %} {% block content %}
 <h1>Profils</h1>
 <p>{{profile.username}}</p>
+<a href="{% url 'edit-profile' %}">Rediģēt profilu</a>
 {% if page == 'farm' %}
 <h2>Saimniecība</h2>
 

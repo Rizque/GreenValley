@@ -1,3 +1,37 @@
-{% extends 'main.html' %} {% block content %}
-<h1>Green Valley</h1>
-{% endblock %}
+{% extends 'main.html' %} {% block content %} {% load static %}
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Green Valley</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="teksts">
+        <h2 class="text-center">Green Valley</h2>
+        <p class="text-center">
+          Vietne vietējo ražotāju produktu vai pakalpojumu reklamēšanai un
+          sasaistei ar potenciālo klientu
+        </p>
+        <h3>Iespējas</h3>
+        <ul>
+          <li>
+            Publicēt piedāvāto produktu vai pakalpojumu vietnē, ko redzēs citi
+            tās lietotāji, un ieinteresētās personas spēs ar jums kontaktēties
+            vai pat norēķināties
+          </li>
+          <p></p>
+          <li>
+            Iepazīties ar vietējajām saimniecībām un to piedāvātajiem labumiem
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <img src="{% static 'images/frontpage_image.jpg' %}" class="img-fluid" />
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
