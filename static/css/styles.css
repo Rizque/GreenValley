@@ -81,3 +81,51 @@ ul {
     font-size: 18px;
   }
 }
+
+/* Add your custom styles here */
+
+#searchForm {
+  margin-bottom: 1rem;
+}
+
+.card {
+  border: none;
+}
+
+.card__body {
+  text-decoration: none;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+.card-text a {
+  text-decoration: none;
+}
+
+.card-text a:hover {
+  text-decoration: underline;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.list-group {
+  border: none;
+}
+
+.list-group-item {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #dee2e6; /* Add a bottom border with desired style */
+  border-radius: 0;
+}

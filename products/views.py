@@ -1,5 +1,6 @@
+from django.shortcuts import render
 from django.shortcuts import render, redirect
-from .models import Product
+from .models import Product, ProductCategory
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm
 from .utils import searchProducts, paginateProducts
@@ -10,15 +11,31 @@ def products(request):
     products, search_query = searchProducts(request)
     products = products.order_by('-date')
     custom_range, products = paginateProducts(request, products, 9)
+    categories = ProductCategory.objects.all()
 
-    context = {'products': products,
-               'search_query': search_query,  'custom_range': custom_range}
+    context = {
+        'products': products,
+        'search_query': search_query,
+        'custom_range': custom_range,
+        'categories': categories,
+    }
     return render(request, 'products/products.html', context)
 
 
 def product(request, pk):
     projectObj = Product.objects.get(product_id=pk)
     return render(request, 'products/product.html', {'product': projectObj})
+
+
+def category_products(request, category_id):
+    category = ProductCategory.objects.get(category_id=category_id)
+    products = Product.objects.filter(category=category)
+    categories = ProductCategory.objects.all()
+    context = {
+        'products': products,
+        'categories': categories,
+    }
+    return render(request, 'products/category.html', context)
 
 
 @login_required(login_url='login')

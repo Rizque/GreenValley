@@ -29,12 +29,12 @@ class Product(models.Model):
     product_id = models.UUIDField(default=uuid.uuid4, unique=True,
                                   primary_key=True, editable=False)
     farm = models.ForeignKey(
-        Profile, null=True, blank=True, on_delete=models.SET_NULL)
+        Profile, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     category = models.ForeignKey(
-        ProductCategory, on_delete=models.CASCADE, null=True)
+        ProductCategory, on_delete=models.CASCADE, )
     description = models.TextField()
-    p_foto = models.ImageField(null=True, blank=False)
+    foto = models.ImageField()
 
     price = models.DecimalField(
         max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])

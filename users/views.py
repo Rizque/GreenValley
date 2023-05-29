@@ -4,8 +4,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.models import User, Group
-from .forms import UserCreationForm, ProfileForm
-from .models import Profile, Farm
+from .forms import UserCreationForm, ProfileForm, FarmForm
+from .models import Profile, Farm, Client
 from .utils import searchFarms, paginateFarms
 
 
@@ -70,14 +70,21 @@ def selectGroup(request):
         user = User.objects.get(id=user_id)
         user.groups.add(group)
         user.save()
+
         profile = Profile.objects.get(user=user)
-        profile.chosen_group = group_name
+        profile.username = user.username
+        profile.email = user.email
         profile.save()
 
-        messages.success(request, 'Group has been set successfully!')
+        if group_name == 'farm':
+            Farm.objects.create(owner=profile)
+            # login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('edit-farm')
 
-        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        return redirect('home')
+        elif group_name == 'client':
+            Client.objects.create(person=profile)
+            # login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('edit-profile')
 
     return render(request, 'users/select_group.html')
 
@@ -112,9 +119,32 @@ def editProfile(request):
         if form.is_valid():
             form.save()
 
-            return redirect('account')
+            return redirect('profile')
     context = {'form': form}
     return render(request, 'users/profile_form.html', context)
+
+
+@login_required(login_url='login')
+def editFarm(request):
+    profile = request.user.profile
+    farm = profile.farm
+
+    if farm is None:
+        farm = Farm(owner=profile)
+
+    form = FarmForm(instance=farm)
+
+    if request.method == 'POST':
+        form = FarmForm(request.POST, request.FILES, instance=farm)
+        if form.is_valid():
+            farm = form.save(commit=False)
+            farm.owner = profile
+            farm.save()
+
+            return redirect('profile')
+
+    context = {'form': form}
+    return render(request, 'users/farm_form.html', context)
 
 
 @login_required(login_url='login')

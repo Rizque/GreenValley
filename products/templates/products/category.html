@@ -1,0 +1,6 @@
+{% extends 'main.html' %} {% block content %} {% for product in products %}
+<p>{{ product.name }}</p>
+
+{% empty %}
+<p>No categories available.</p>
+{% endfor %} {% endblock %}

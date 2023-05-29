@@ -1,3 +1,78 @@
-{% extends 'main.html' %} {% block content %} {% for product in products %}
-<a href="{% url 'product' product.product_id %}"><h5>{{ product.name }}</h5></a
->{% endfor %} {% endblock content %}
+{% extends 'main.html' %} {% block content %}
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Kategorijas</h5>
+          <div class="list-group">
+            {% for category in categories %}
+            <a
+              href="/products/{{ category.category_id }}"
+              class="list-group-item list-group-item-action"
+            >
+              {{ category.name }}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="row justify-content-end">
+        <div class="col-lg-5">
+          <form
+            id="searchForm"
+            class="form mt-4 mb-2 text-right"
+            action="{% url 'products' %}"
+            method="get"
+          >
+            <div class="input-group">
+              <input
+                class="form-control"
+                id="formInputSearch"
+                type="text"
+                name="search_query"
+                placeholder="Meklēt produktu"
+                value="{{search_query}}"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-secondary" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="{{ product.foto.url }}"
+              class="card-img-top"
+              alt="Skyscrapers"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">
+                {{ product.price }} € / {{ product.unit }}
+              </p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{ product.farm.farm.name }}</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'pagination.html' with queryset=products custom_range=custom_range %}
+{% endblock content %}
