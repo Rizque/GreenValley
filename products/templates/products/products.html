@@ -52,9 +52,11 @@
         <div class="col">
           <div class="card h-100">
             <a href="{% url 'product' product.product_id %}" class="card__body">
-              <img src="{{ product.foto.url }}" class="card-img-top" alt="image"
-            /></a>            <div class="card-body">
-              <h5 class="card-title">{{ product.name }}</h5>
+              <img src="{{ product.foto.url }}" class="card-img-top" alt="image"/></a>            
+            <div class="card-body">
+              <a href="{% url 'product' product.product_id %}">   
+              <h5 class="card-title">{{ product.name }}</h5></a>
+
               <p class="card-text">
                 {{ product.price }} € / {{ product.unit }}
               </p>

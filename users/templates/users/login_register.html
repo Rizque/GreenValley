@@ -1,77 +1,104 @@
 {% extends 'main.html' %} {% load socialaccount %} {% providers_media_js %}
 <!--  -->
 {% block content %} {% if page == 'register' %}
-
 <div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div class="card shadow">
-        <!-- <div class="card-header bg-primary text-white text-center py-3">
-          <h4>Sign Up</h4>
-        </div> -->
         <div class="card-body">
           <form action="{% url 'register' %}" method="POST">
             {% csrf_token %} {% for field in form %}
-            <div
-              class="form-group d-flex align-items-center justify-content-between"
-            >
-              <label class="align-self-start" for="{{field.id_for_label}}"
+            <div class="mb-3 row">
+              <label
+                for="{{field.id_for_label}}"
+                class="col-sm-4 col-form-label"
                 >{{field.label}}</label
               >
-              {{field}} {% for error in field.errors %}
-              <p class="text-danger align-self-end">{{error}}</p>
-              {% endfor %}
+              <div class="col-sm-8">
+                {{field}} {% for error in field.errors %}
+                <p class="text-danger">{{error}}</p>
+                {% endfor %}
+              </div>
             </div>
             {% endfor %}
 
-            <button type="submit" class="btn btn-primary btn-block">
-              Sign Up
-            </button>
-            <a href="{% provider_login_url 'google' %}">Sign Up With Google</a>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">
+                Reģistrēties
+              </button>
+              <button class="btn">
+                <a
+                  class="btn btn-lg btn-google btn-block"
+                  href="{% provider_login_url 'google' %}"
+                  ><img
+                    src="https://img.icons8.com/color/16/000000/google-logo.png"
+                  />
+                  Pievienoties ar Google</a
+                >
+              </button>
+            </div>
           </form>
         </div>
-        <div class="card-footer text-center"></div>
+        <div class="card-footer text-center">
+          <p>Jau esi reģistrējies? <a href="{% url 'login' %}">Ienākt</a></p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 {% else %}
 <div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-md-6">
-      <form method="POST" action="" class="form">
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="username">Username:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="username"
-            name="username"
-            placeholder="Enter your username..."
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            placeholder="••••••••"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Sign In</button>
+    <div class="col-md-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <form method="POST" action="" class="form">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="username" class="form-label">Lietotājvārds:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Enter your username..."
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Parole:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+              />
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">
+                Pievienoties
+              </button>
 
-        {% comment %}
-        <a href="{% provider_login_url 'facebook' method='js_sdk' %}"
-          >Facebook Login</a
-        >
-        {% endcomment %}
-        <a href="{% provider_login_url 'google' %}?next=/home/"
-          >Sign In With Google</a
-        >
-      </form>
+              <button class="btn">
+                <a
+                  class="btn btn-lg btn-google btn-block"
+                  href="{% provider_login_url 'google' %}?next=/home/"
+                  ><img
+                    src="https://img.icons8.com/color/16/000000/google-logo.png"
+                  />
+                  Pievienoties ar Google</a
+                >
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="text-center card-footer mt-0">
+          <p>
+            Neesi reģistrējies? <a href="{% url 'register' %}">Reģistrēties</a>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

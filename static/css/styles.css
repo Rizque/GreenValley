@@ -163,3 +163,8 @@ button a {
 .edit {
   color: white !important;
 }
+
+.category_heading {
+  text-align: center;
+  margin-top: 0.5em;
+}

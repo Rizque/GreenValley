@@ -35,7 +35,10 @@
         /></a>
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
+        <a href="{% url 'product' product.product_id %}">
+          <h5 class="card-title">{{ product.name }}</h5></a
+        >
+
         <p class="card-text">{{ product.price }} € / {{ product.unit}}</p>
         {% comment %}
         <p class="card-text">{{ product.saimnieciba.s_nosaukums}}</p>

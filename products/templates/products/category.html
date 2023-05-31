@@ -1,6 +1,28 @@
-{% extends 'main.html' %} {% block content %} {% for product in products %}
-<p>{{ product.name }}</p>
+{% extends 'main.html' %} {% block content %}
+<div class="d-flex justify-content-center">
+  <h1 class="category_heading">{{ category.name }}</h1>
+</div>
 
-{% empty %}
-<p>No categories available.</p>
-{% endfor %} {% endblock %}
+<div class="row row-cols-1 row-cols-md-4 g-4" style="margin: 1rem">
+  {% for product in products %}
+  <div class="col" style="margin-top: 1rem">
+    <div class="card h-100">
+      <div>
+        <a href="{% url 'product' product.product_id %}" class="card__body">
+          <img src="{{ product.foto.url }}" class="card-img-top" alt="image" />
+        </a>
+      </div>
+      <div class="card-body">
+        <a href="{% url 'product' product.product_id %}">
+          <h5 class="card-title">{{ product.name }}</h5>
+        </a>
+        <p class="card-text">{{ product.price }} € / {{ product.unit }}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ product.farm.farm.name }}</small>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

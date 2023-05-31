@@ -55,11 +55,10 @@
             >Rediģēt</a
           >
         </button>
-
         <button
           class="btn btn-danger"
-          data-toggle="modal"
-          data-target="#my-modal-{{ product.product_id }}"
+          data-bs-toggle="modal"
+          data-bs-target="#my-modal-{{ product.product_id }}"
         >
           Dzēst
         </button>
@@ -77,16 +76,7 @@
                 <div class="card border-0 p-sm-3 p-2 justify-content-center">
                   <div class="card-header pb-0 bg-white border-0">
                     <div class="row">
-                      <div class="col ml-auto">
-                        <button
-                          type="button"
-                          class="close"
-                          data-dismiss="modal"
-                          aria-label="Close"
-                        >
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
+                      <div class="col ml-auto"></div>
                     </div>
                     <p class="font-weight-bold mb-2">
                       Vai Jūs esat pārliecināti ka vēlaties izdzēst šo produktu?
@@ -98,7 +88,7 @@
                         <button
                           type="button"
                           class="btn btn-light text-muted"
-                          data-dismiss="modal"
+                          data-bs-dismiss="modal"
                         >
                           Atcelt
                         </button>
