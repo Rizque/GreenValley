@@ -1,17 +1,27 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %}
+{% block content %}
 
 <div class="container mt-4">
   <div class="row">
     <div class="col-lg-3">
       <div class="card h-100">
         <div class="card-body">
+          <form class="form-inline mt-2 order">
+            <div class="position-relative">
+              <h5 class="card-title">Kārtot pēc:</h5>
+
+              <select class="form-select" id="orderSelect" name="product_order" onchange="this.form.submit()">
+                <option value="-date" {% if request.GET.product_order == '-date' %}selected{% endif %}>Vispirms jaunākie</option>
+                <option value="price_asc" {% if request.GET.product_order == 'price_asc' %}selected{% endif %}>No mazākās cenas</option>
+                <option value="price_desc" {% if request.GET.product_order == 'price_desc' %}selected{% endif %}>No lielākās cenas</option>
+              </select>
+              <div class="arrow-down"></div>
+            </div>
+          </form>
           <h5 class="card-title">Kategorijas</h5>
           <div class="list-group">
             {% for category in categories %}
-            <a
-              href="/products/{{ category.category_id }}"
-              class="list-group-item list-group-item-action"
-            >
+            <a href="/products/{{ category.category_id }}" class="list-group-item list-group-item-action">
               {{ category.name }}
             </a>
             {% endfor %}
@@ -21,23 +31,12 @@
     </div>
 
     <div class="col-lg-9">
-      <div class="row justify-content-end">
-        <div class="col-lg-5">
-          <form
-            id="searchForm"
-            class="form mt-4 mb-2 text-right"
-            action="{% url 'products' %}"
-            method="get"
-          >
+      <div class="row justify-content-end search">
+
+        <div class="col-lg-5 " >
+          <form id="searchForm" class="form mt-4 mb-2 text-right" action="{% url 'products' %}" method="get">
             <div class="input-group">
-              <input
-                class="form-control"
-                id="formInputSearch"
-                type="text"
-                name="search_query"
-                placeholder="Meklēt produktu"
-                value="{{search_query}}"
-              />
+              <input class="form-control" id="formInputSearch" type="text" name="search_query" placeholder="Meklēt produktu" value="{{search_query}}" />
               <div class="input-group-append">
                 <button class="btn btn-secondary" type="submit">
                   <i class="fas fa-search"></i>
@@ -52,12 +51,9 @@
         {% for product in products %}
         <div class="col">
           <div class="card h-100">
-            <img
-              src="{{ product.foto.url }}"
-              class="card-img-top"
-              alt="Skyscrapers"
-            />
-            <div class="card-body">
+            <a href="{% url 'product' product.product_id %}" class="card__body">
+              <img src="{{ product.foto.url }}" class="card-img-top" alt="image"
+            /></a>            <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>
               <p class="card-text">
                 {{ product.price }} € / {{ product.unit }}

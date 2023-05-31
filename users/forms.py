@@ -38,7 +38,12 @@ class ProfileForm(ModelForm):
     class Meta:
         model = Profile
         fields = '__all__'
-        exclude = ['user', 'date']
+        exclude = ['user', 'date', 'username']
+
+        labels = {
+            'email': 'E-pasts:',
+            'phone': 'Tālrunis:',
+        }
 
 
     def __init__(self, *args, **kwargs):
@@ -51,7 +56,16 @@ class FarmForm(ModelForm):
     class Meta:
         model = Farm
         fields = '__all__'
-        exclude = ['owner', 'date']
+        exclude = ['owner', 'date', 'longitude', 'latitude']
+
+        labels = {
+            'name': 'Saimniecības nosaukums:',
+            'description': 'Apraksts:',
+            'foto': 'Fotogrāfija:',
+            'country': 'Valsts:',
+            'city': 'Pilsēta:',
+            'address': 'Adrese:',
+        }
 
 
     def __init__(self, *args, **kwargs):

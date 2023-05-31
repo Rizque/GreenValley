@@ -9,6 +9,7 @@ class ProductForm(ModelForm):
         exclude = ['farm', 'date']
         labels = {
             'name': 'Produkta nosaukums:',
+            'category': 'Produkta ktegorija:',
             'description': 'Apraksts:',
             'foto': 'Fotogrāfija:',
             'price': 'Cena (EUR):',

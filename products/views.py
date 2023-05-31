@@ -9,7 +9,15 @@ from django.db.models import Q
 
 def products(request):
     products, search_query = searchProducts(request)
-    products = products.order_by('-date')
+    product_order = request.GET.get('product_order')
+
+    if product_order == 'price_asc':
+        products = products.order_by('price')
+    elif product_order == 'price_desc':
+        products = products.order_by('-price')
+    else:
+        products = products.order_by('-date')
+
     custom_range, products = paginateProducts(request, products, 9)
     categories = ProductCategory.objects.all()
 

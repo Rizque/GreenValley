@@ -3,12 +3,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div >
+<div class="container dform" >
     <form method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 		
 		{{ form|crispy }}
-		<button type="submit">Saglabāt</button>
+		<button type="submit" class="btn btn-secondary">Saglabāt</button>
     <form>
 </div>
 {% endblock content %}

@@ -1,5 +1,49 @@
 {% extends 'main.html' %} {% block content %}
-<h1>{{farm.name}}</h1>
-<p>{{farm.description}}</p>
+<div class="container" style="margin-top: 3rem">
+  <!-- <div class="page-header">
+    <h1>About Me</h1>
+  </div> -->
+  <!--END page-header-->
+  <div class="row" id="features">
+    <div class="col-sm-7 feature">
+      <img
+        src="{{ farm.foto.url }}"
+        alt="Web Design"
+        class="img-circle"
+        style="width: 100%"
+      />
+    </div>
+    <!--END feature-->
 
-{% endblock %}
+    <div class="col-sm-5 feature">
+      <h1>{{farm.name}}</h1>
+      <p>{{farm.description}}</p>
+      <p>E-pasts: {{farm.owner.email}}</p>
+      <p>Lokācija: {{farm.address}}</p>
+    </div>
+    <!--END feature-->
+  </div>
+  <!--end features-->
+</div>
+<div class="row row-cols-1 row-cols-md-4 g-4" style="margin: 1rem">
+  {% for product in farm.owner.product_set.all %}
+  <div class="col" style="margin-top: 1rem">
+    <div class="card h-100">
+      <div>
+        <a href="{% url 'product' product.product_id %}" class="card__body">
+          <img src="{{ product.foto.url }}" class="card-img-top" alt="image"
+        /></a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.price }} € / {{ product.unit}}</p>
+        {% comment %}
+        <p class="card-text">{{ product.saimnieciba.s_nosaukums}}</p>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

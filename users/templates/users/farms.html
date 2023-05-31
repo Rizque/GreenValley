@@ -1,8 +1,48 @@
 {% extends 'main.html' %} {% block content %}
-<h1>Saimmiecības</h1>
+
+<form
+  id="searchForm"
+  class="form d-flex justify-content-center mt-4"
+  action="{% url 'farms' %}"
+  method="get"
+>
+  <div class="input-group input-group-lg" style="width: 40%">
+    <input
+      class="form-control"
+      id="formInputSearch"
+      type="text"
+      name="search_query"
+      placeholder="Meklēt saimniecību"
+      value="{{search_query}}"
+    />
+    <button class="btn btn-secondary" type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</form>
+
 <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 1rem">
   {% for farm in farms %}
-  <a href="{% url 'farm' farm.id %}"><h5>{{ farm.name }}</h5></a>
+  <div class="col" style="margin-top: 1rem">
+    <div class="card h-100">
+      <div>
+        <a href="{% url 'farm' farm.id %}" class="card__body">
+          <img src="{{ farm.foto.url }}" class="card-img-top" alt="image" />
+        </a>
+      </div>
+      <div class="card-body">
+        <a href="{% url 'farm' farm.id %}">
+          <h5 class="card-title">{{ farm.name }}</h5>
+        </a>
+        <p class="card-text">{{ farm.description|truncatewords_html:30 }}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ farm.address }}</small>
+      </div>
+    </div>
+  </div>
   {% endfor %}
 </div>
-{% endblock %}
+
+{% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
+{% endblock content %}
