@@ -10,12 +10,20 @@ class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, null=True, blank=True)
     username = models.CharField(max_length=200, )
+    first_name = models.CharField(max_length=100, blank=True, null=True)
+    last_name = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=500, )
     phone = models.CharField(max_length=8, blank=True, null=True)
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.username
+
+    def save(self, *args, **kwargs):
+        if self.user:
+            self.first_name = self.user.first_name
+            self.last_name = self.user.last_name
+        super(Profile, self).save(*args, **kwargs)
 
 
 class Farm (models.Model):
@@ -25,9 +33,9 @@ class Farm (models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     foto = models.ImageField(null=True, blank=False, default='defaultx.jpg',)
-    city = models.CharField(max_length=200)
     country = models.CharField(
         max_length=200,  default="Latvija")
+    city = models.CharField(max_length=200)
     address = models.CharField(max_length=200,)
     latitude = models.CharField(max_length=200, blank=True, null=True)
     longitude = models.CharField(max_length=200, blank=True, null=True)
