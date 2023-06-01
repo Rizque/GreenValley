@@ -12,6 +12,7 @@
         class="img-circle"
         style="width: 100%"
       />
+      <div id="map"></div>
     </div>
     <!--END feature-->
 
@@ -19,12 +20,21 @@
       <h1>{{farm.name}}</h1>
       <p>{{farm.description}}</p>
       <p>E-pasts: {{farm.owner.email}}</p>
-      <p>Lokācija: {{farm.address}}</p>
+      <p>Lokācija: {{farm.city}} / {{farm.address}}</p>
     </div>
     <!--END feature-->
   </div>
   <!--end features-->
 </div>
+
+<script>
+  var latitude = {{ farm.latitude|floatformat:"-2" }};
+  var longitude = {{ farm.longitude|floatformat:"-2" }};
+  window.onload = function() {
+      initMap(latitude, longitude);
+  };
+</script>
+
 <div class="row row-cols-1 row-cols-md-4 g-4" style="margin: 1rem">
   {% for product in farm.owner.product_set.all %}
   <div class="col" style="margin-top: 1rem">

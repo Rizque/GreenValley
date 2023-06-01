@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 import uuid
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderTimedOut
 
 
 class Profile(models.Model):
@@ -26,23 +28,39 @@ class Profile(models.Model):
         super(Profile, self).save(*args, **kwargs)
 
 
-class Farm (models.Model):
+class Farm(models.Model):
     owner = models.OneToOneField(
         Profile, on_delete=models.CASCADE, blank=True, null=True
     )
     name = models.CharField(max_length=200)
     description = models.TextField()
-    foto = models.ImageField(null=True, blank=False, default='defaultx.jpg',)
-    country = models.CharField(
-        max_length=200,  default="Latvija")
+    foto = models.ImageField(null=True, blank=True,)
+    country = models.CharField(max_length=200, default="Latvija")
     city = models.CharField(max_length=200)
     address = models.CharField(max_length=200,)
     latitude = models.CharField(max_length=200, blank=True, null=True)
     longitude = models.CharField(max_length=200, blank=True, null=True)
     date = models.DateTimeField(default=timezone.now)
 
-    # def __str__(self):
-    #     return self.name
+    def save(self, *args, **kwargs):
+        if self.country and self.city and self.address:
+            address = f"{self.country}, {self.city}, {self.address}"
+            latitude, longitude = geocode_address(address)
+            if latitude is not None and longitude is not None:
+                self.latitude = str(latitude)
+                self.longitude = str(longitude)
+        super(Farm, self).save(*args, **kwargs)
+
+
+def geocode_address(address):
+    geolocator = Nominatim(user_agent='my_app_name')
+    try:
+        location = geolocator.geocode(address)
+        if location is not None:
+            return location.latitude, location.longitude
+        return None, None
+    except GeocoderTimedOut:
+        return geocode_address(address)
 
 
 class Client (models.Model):

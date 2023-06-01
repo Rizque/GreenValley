@@ -168,7 +168,8 @@ def farms(request):
 
 
 def farm(request, pk):
-
     farm = Farm.objects.get(id=pk)
-    context = {'farm': farm}
+    context = {
+        'farm': farm,
+    }
     return render(request, 'users/farm.html', context)

@@ -74,21 +74,6 @@ button a {
   color: white;
 }
 
-@media only screen and (max-width: 768px) {
-  .teksts img {
-    width: 100%;
-    float: none;
-    margin: 0 auto;
-    margin-bottom: 20px;
-  }
-  h1 {
-    font-size: 5em;
-  }
-  .teksts {
-    font-size: 18px;
-  }
-}
-
 .dform {
   margin-top: 3rem;
   margin-bottom: 3rem;
@@ -167,4 +152,29 @@ button a {
 .category_heading {
   text-align: center;
   margin-top: 0.5em;
+}
+
+#map {
+  width: 100%;
+  height: 30em;
+  margin: 2em auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .teksts img {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 5em;
+  }
+  .teksts {
+    font-size: 18px;
+  }
+
+  #map {
+    width: 90%;
+  }
 }
