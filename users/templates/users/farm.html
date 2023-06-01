@@ -12,7 +12,16 @@
         class="img-circle"
         style="width: 100%"
       />
+      {% if farm and latitude and longitude %}
       <div id="map"></div>
+      <script>
+        var latitude = {{ farm.latitude|floatformat:"-2" }};
+        var longitude = {{ farm.longitude|floatformat:"-2" }};
+        window.onload = function() {
+            initMap(latitude, longitude);
+        };
+      </script>
+      {% endif %}
     </div>
     <!--END feature-->
 
@@ -26,14 +35,6 @@
   </div>
   <!--end features-->
 </div>
-
-<script>
-  var latitude = {{ farm.latitude|floatformat:"-2" }};
-  var longitude = {{ farm.longitude|floatformat:"-2" }};
-  window.onload = function() {
-      initMap(latitude, longitude);
-  };
-</script>
 
 <div class="row row-cols-1 row-cols-md-4 g-4" style="margin: 1rem">
   {% for product in farm.owner.product_set.all %}

@@ -168,8 +168,14 @@ def farms(request):
 
 
 def farm(request, pk):
-    farm = Farm.objects.get(id=pk)
-    context = {
-        'farm': farm,
-    }
+    try:
+        farm = Farm.objects.get(id=pk)
+        latitude = float(farm.latitude) if farm.latitude else None
+        longitude = float(farm.longitude) if farm.longitude else None
+    except (Farm.DoesNotExist, ValueError):
+        farm = None
+        latitude = None
+        longitude = None
+
+    context = {'farm': farm, 'latitude': latitude, 'longitude': longitude}
     return render(request, 'users/farm.html', context)
