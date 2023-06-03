@@ -179,9 +179,12 @@ EMAIL_HOST_PASSWORD = 'ogtbhrepakmejwsa'
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-STATIC_ROOT = '/home/ritvars/greenvalley/staticfiles/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 20000000
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
