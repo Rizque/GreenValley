@@ -2,6 +2,11 @@
 
 The Green Valley Django App is a web application built with Django framework that allows users to browse and review products from various farms.
 
+## Deployment
+
+The application is deployed and can be accessed online at [https://greenvalley.herokuapp.com/](https://greenvalley.herokuapp.com/). Feel free to visit the site and explore the available features.
+
+
 ## Features
 - User registration and authentication
 - Browse and search for agricultural products
