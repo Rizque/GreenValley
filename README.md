@@ -76,4 +76,5 @@ The Green Valley Django App uses environment variables for configuration. Create
 ## Contributing
 Contributions to the Green Valley Django App are welcome! If you find any issues or would like to suggest improvements, please submit a GitHub issue or pull request.
 
-## The Green Valley Django App is open-source software licensed under the MIT License.
+## License
+The Green Valley Django App is open-source software licensed under the MIT License.
