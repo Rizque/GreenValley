@@ -106,8 +106,8 @@ WSGI_APPLICATION = 'green_valley.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'greenvalleydb',
-        'USER': 'postgres',
+        'NAME': config('NAME'),
+        'USER': config('USER'),
         'PASSWORD': config('PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
