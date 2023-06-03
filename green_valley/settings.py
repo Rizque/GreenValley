@@ -180,7 +180,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-STATIC_ROOT = '/home/ritvars/greenvalley/static/'
+STATIC_ROOT = '/home/ritvars/greenvalley/staticfiles/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 20000000
