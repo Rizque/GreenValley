@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 import django_heroku
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--+j)ug=f$g_*gn(4o9)r7vcw5ycfj(&4s5&#bm@&%e-(9y1j!-'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['greenvalley.herokuapp.com', 'https://10.20.30.18',
                  '127.0.0.1', 'greenvalley.pvg.edu.lv', 'https://greenvalley.pvg.edu.lv']
@@ -107,7 +108,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'greenvalleydb',
         'USER': 'postgres',
-        'PASSWORD': 'rizqueRV777',
+        'PASSWORD': config('PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -168,12 +169,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ritvarsvjakse@gmail.com'
-EMAIL_HOST_PASSWORD = 'ogtbhrepakmejwsa'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
