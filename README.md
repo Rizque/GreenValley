@@ -14,43 +14,43 @@ The Green Valley Django App is a web application built with Django framework tha
 
 ### 1. Clone the repository:
 
-git clone
+`git clone`
 
 ### 2. Change to the project directory:
 
-cd GreenValley
+`cd GreenValley`
 
 ### 3. Install and create a virtual environment:
 
-pip install virtualenv
+`pip install virtualenv`
 
-python -m venv env
+`python -m venv env`
 
 ### 4. Activate the virtual environment:
 
 On Windows:
 
-env\Scripts\activate
+`env\Scripts\activate`
 
 On macOS and Linux:
 
-source env/bin/activate
+`source env/bin/activate`
 
 ### 5. Install the required dependencies:
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 ### 6. Apply database migrations:
 
-python manage.py migrate
+`python manage.py migrate`
 
 ### 7. Create a superuser (admin) account:
 
-python manage.py createsuperuser
+`python manage.py createsuperuser`
 
 ### 8. Start the development server:
 
-python manage.py runserver
+`python manage.py runserver`
 
 ### 9. Open your web browser and visit http://localhost:8000 to access the app.
 
