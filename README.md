@@ -58,7 +58,22 @@ python manage.py runserver
 
 The Green Valley Django App uses environment variables for configuration. Create a .env file in the root directory of the project and set the following variables:
 
-SECRET_KEY=your-secret-key
-DEBUG=
-PASSWORD=
-DATABASE_URL=your-database-url
+- SECRET_KEY=  // Django secret key used for cryptographic signing
+- DEBUG=       // Debug mode (True/False)
+- NAME=        // Name of the database
+- USER=        // Database username
+- PASSWORD=    // Database password
+- CLIENT_ID=   // Client ID (e.g., for third-party integrations)
+- SECRET=      // Client secret (e.g., for third-party integrations)
+
+## Usage
+- Create a farm account to add and manage products.
+- Create a client account to browse and review products.
+- Use the search functionality to find specific products or farms.
+- Click on a product to view its details, ratings, and reviews.
+- Submit reviews for products.
+
+## Contributing
+Contributions to the Green Valley Django App are welcome! If you find any issues or would like to suggest improvements, please submit a GitHub issue or pull request.
+
+## The Green Valley Django App is open-source software licensed under the MIT License.
