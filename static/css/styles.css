@@ -117,7 +117,11 @@ button a {
 }
 
 .card-img-top {
-  height: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+.card-img-top.farm {
+  height: 350px;
   object-fit: cover;
 }
 
@@ -207,4 +211,12 @@ button a {
 
 .categoryx {
   margin-top: 2rem;
+}
+
+.prof_pic {
+  max-height: 50em;
+}
+
+.profile {
+  font-size: 1.5em;
 }

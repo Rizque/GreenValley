@@ -27,7 +27,11 @@
     <div class="card h-100">
       <div>
         <a href="{% url 'farm' farm.id %}" class="card__body">
-          <img src="{{ farm.foto.url }}" class="card-img-top" alt="image" />
+          <img
+            src="{{ farm.foto.url }}"
+            class="card-img-top farm"
+            alt="image"
+          />
         </a>
       </div>
       <div class="card-body">

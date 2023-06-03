@@ -2,7 +2,7 @@
 <div class="container dform">
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %} {{ form|crispy }}
-    <button type="submit">Saglabāt izmaiņas</button>
+    <button type="submit">Saglabāt</button>
   </form>
 </div>
 {% endblock content %}

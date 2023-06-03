@@ -4,6 +4,7 @@ from django.utils import timezone
 import uuid
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
+from django.core.validators import RegexValidator
 
 
 class Profile(models.Model):
@@ -15,16 +16,27 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=500, )
-    phone = models.CharField(max_length=8, blank=True, null=True)
+    foto = models.ImageField(null=True, blank=False,
+                             default='default_profile.jpg',)
+    phone_regex = RegexValidator(
+        regex=r'^\d{8}$'
+    )
+    phone = models.CharField(
+        max_length=8,
+        blank=True,
+        null=True,
+        validators=[phone_regex]
+    )
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.username
 
     def save(self, *args, **kwargs):
-        if self.user:
-            self.first_name = self.user.first_name
-            self.last_name = self.user.last_name
+        if not self.id:
+            if self.user:
+                self.first_name = self.user.first_name
+                self.last_name = self.user.last_name
         super(Profile, self).save(*args, **kwargs)
 
 
@@ -34,8 +46,18 @@ class Farm(models.Model):
     )
     name = models.CharField(max_length=200)
     description = models.TextField()
-    foto = models.ImageField(null=True, blank=True)
-    phone = models.CharField(max_length=8, blank=True, null=True)
+
+    foto = models.ImageField(null=True, blank=False,
+                             default='default_farm.jpg',)
+    phone_regex = RegexValidator(
+        regex=r'^\d{8}$'
+    )
+    phone = models.CharField(
+        max_length=8,
+        blank=True,
+        null=True,
+        validators=[phone_regex]
+    )
     country = models.CharField(max_length=200, default="Latvija")
     city = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
@@ -70,3 +92,5 @@ class Client (models.Model):
     )
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
+    foto = models.ImageField(null=True, blank=False,
+                             default='default_profile.jpg',)

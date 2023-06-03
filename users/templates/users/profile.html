@@ -6,24 +6,18 @@
   </div> -->
   <!--END page-header-->
   <div class="row" id="features">
-    <div class="col-sm-7 feature">
+    <div class="col-sm-7 feature text-center">
       <img
         src="{{ profile.farm.foto.url }}"
         alt="Web Design"
-        class="img-circle"
-        style="width: 100%"
+        class="prof_pic"
       />
     </div>
-    <!--END feature-->
-
     <div class="col-sm-5 feature">
       <h1>{{profile.farm.name}}</h1>
       <p>{{profile.farm.description}}</p>
       <p>{{profile.address}}</p>
       <div class="container">
-        <!-- <button type="button" class="btn btn-secondary">
-          <a href="{% url 'edit-profile' %}">Rediģēt profilu</a>
-        </button> -->
         <button type="button" class="btn btn-secondary">
           <a href="{% url 'edit-farm' %}">Rediģēt profilu</a>
         </button>
@@ -32,9 +26,7 @@
         </button>
       </div>
     </div>
-    <!--END feature-->
   </div>
-  <!--end features-->
 </div>
 
 <div class="row row-cols-1 row-cols-md-4 g-4" style="margin: 1rem">
@@ -118,5 +110,23 @@
   {% endfor %}
 </div>
 {% else %}
-<h2>Klients</h2>
+<div class="container" style="margin-top: 3rem">
+  <div class="row" id="features">
+    <div class="col-sm-7 feature text-center">
+      <img class="prof_pic" src="{{ profile.foto.url }}" />
+    </div>
+    <div class="col-sm-5 feature profile">
+      <p>Vārds: {{profile.first_name}}</p>
+      <p>Uzvārds: {{profile.last_name}}</p>
+      <p>Tālrunis: {{profile.phone}}</p>
+      <p>E-pasts: {{profile.email}}</p>
+      <div class="container">
+        <button type="button" class="btn btn-secondary">
+          <a href="{% url 'edit-profile' %}">Rediģēt profilu</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endif %} {% endblock %}
