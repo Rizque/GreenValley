@@ -141,17 +141,16 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    },
-    'facebook': {
+        'APP': {
+            'client_id': '414374833658-gq4g3l4f5unqn2m1djglmi97v7dtinl5.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        },
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'}
     }
 }
+
 
 SITE_ID = 5
 SOCIALACCOUNT_LOGIN_ON_GET = True
