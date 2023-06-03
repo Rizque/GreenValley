@@ -1,4 +1,5 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %} {% block content %} {% if page == 'farm' %}
+
 <div class="container" style="margin-top: 3rem">
   <!-- <div class="page-header">
     <h1>About Me</h1>
@@ -116,5 +117,6 @@
   </div>
   {% endfor %}
 </div>
-
-{% endblock %}
+{% else %}
+<h2>Klients</h2>
+{% endif %} {% endblock %}

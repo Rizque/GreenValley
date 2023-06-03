@@ -69,6 +69,9 @@ ul {
 a {
   text-decoration: none;
 }
+.black {
+  color: black;
+}
 
 button a {
   color: white;
@@ -99,7 +102,6 @@ button a {
 .card-title {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  margin-top: 2rem;
 }
 
 .card-text {
@@ -177,4 +179,32 @@ button a {
   #map {
     width: 90%;
   }
+}
+
+.rating-list li {
+  float: right;
+  color: #ddd;
+  padding: 10px 5px;
+}
+
+.rating-list li:hover,
+.rating-list li:hover ~ li {
+  color: orange;
+}
+
+.rating-list {
+  display: inline-block;
+  list-style: none;
+}
+.checked {
+  color: orange;
+}
+
+.product_rating {
+  margin: auto;
+  padding: auto;
+}
+
+.categoryx {
+  margin-top: 2rem;
 }

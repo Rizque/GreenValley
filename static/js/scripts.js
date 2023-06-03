@@ -12,3 +12,14 @@ function initMap(latitude, longitude) {
     title: "Farm Location",
   });
 }
+
+const rate = (rating, product_id) => {
+  fetch(`/rate/${product_id}/${rating}/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((rest) => {
+    window.location.reload();
+  });
+};

@@ -12,21 +12,75 @@
       </div>
 
       <div class="col-md-6">
-        <a style="color: black" href="{% url 'farm' product.farm.farm.id %}">
+        <a class="black" href="{% url 'farm' product.farm.farm.id %}">
           <p style="font-size: 20px" class="card-text">
             {{ product.farm.farm.name}}
           </p></a
         >
 
         <h1 class="display-5 fw-bolder">{{ product.name }}</h1>
+        <div class="card-title">
+          <span
+            class="fa fa-star {% if product.average_rating > 0 %} checked {% endif %}"
+          ></span>
+          <span
+            class="fa fa-star {% if product.average_rating > 1 %} checked {% endif %}"
+          ></span>
+          <span
+            class="fa fa-star {% if product.average_rating > 2 %} checked {% endif %}"
+          ></span>
+          <span
+            class="fa fa-star {% if product.average_rating > 3 %} checked {% endif %}"
+          ></span>
+          <span
+            class="fa fa-star {% if product.average_rating > 4 %} checked {% endif %}"
+          ></span>
+        </div>
         <div class="fs-2 mb-2">
           <span style="font-size: 20px"
             >{{ product.price }} € / {{ product.unit }}
           </span>
         </div>
         <p class="lead">{{ product.description }}</p>
+
+        <h5>Novērtē produktu:</h5>
+        <div>
+          <ul class="btn btn-light list-inline rating-list">
+            <li onclick="rate(5, '{{ product.product_id }}')">
+              <i
+                class="fa fa-star {% if product.user_rating > 4 %} checked {% endif %}"
+                title="Rate 5"
+              ></i>
+            </li>
+            <li onclick="rate(4, '{{ product.product_id }}')">
+              <i
+                class="fa fa-star {% if product.user_rating > 3 %} checked {% endif %}"
+                title="Rate 4"
+              ></i>
+            </li>
+            <li onclick="rate(3, '{{ product.product_id }}')">
+              <i
+                class="fa fa-star {% if product.user_rating > 2 %} checked {% endif %}"
+                title="Rate 3"
+              ></i>
+            </li>
+            <li onclick="rate(2, '{{ product.product_id }}')">
+              <i
+                class="fa fa-star {% if product.user_rating > 1 %} checked {% endif %}"
+                title="Rate 2"
+              ></i>
+            </li>
+            <li onclick="rate(1, '{{ product.product_id }}')">
+              <i
+                class="fa fa-star {% if product.user_rating > 0 %} checked {% endif %}"
+                title="Rate 1"
+              ></i>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 {% endblock content %}

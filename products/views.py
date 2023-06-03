@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
-from .models import Product, ProductCategory
+from .models import Product, ProductCategory, Rating
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm
 from .utils import searchProducts, paginateProducts
 from django.db.models import Q
+import uuid
+from django.http import HttpRequest, HttpResponse
 
 
 def products(request):
@@ -31,8 +33,11 @@ def products(request):
 
 
 def product(request, pk):
-    projectObj = Product.objects.get(product_id=pk)
-    return render(request, 'products/product.html', {'product': projectObj})
+    product = Product.objects.get(product_id=pk)
+    rating = Rating.objects.filter(
+        product=product, user=request.user.profile).first()
+    product.user_rating = rating.rating if rating else 0
+    return render(request, 'products/product.html', {'product': product})
 
 
 def category_products(request, category_id):
@@ -84,3 +89,10 @@ def deleteProduct(request, pk):
     product = profile.product_set.get(product_id=pk)
     product.delete()
     return redirect('profile')
+
+
+def rate(request: HttpRequest, product_id: uuid.UUID, rating: int) -> HttpResponse:
+    product = Product.objects.get(product_id=product_id)
+    Rating.objects.filter(product=product, user=request.user.profile).delete()
+    product.rating_set.create(user=request.user.profile, rating=rating)
+    return HttpResponse("Rating submitted successfully!")

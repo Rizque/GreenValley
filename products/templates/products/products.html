@@ -8,7 +8,7 @@
         <div class="card-body">
           <form class="form-inline mt-2 order">
             <div class="position-relative">
-              <h5 class="card-title">Kārtot pēc:</h5>
+              <h5 class="card-title ">Kārtot pēc:</h5>
 
               <select class="form-select" id="orderSelect" name="product_order" onchange="this.form.submit()">
                 <option value="-date" {% if request.GET.product_order == '-date' %}selected{% endif %}>Vispirms jaunākie</option>
@@ -18,7 +18,7 @@
               <div class="arrow-down"></div>
             </div>
           </form>
-          <h5 class="card-title">Kategorijas</h5>
+          <h5 class="card-title categoryx">Kategorijas</h5>
           <div class="list-group">
             {% for category in categories %}
             <a href="/products/{{ category.category_id }}" class="list-group-item list-group-item-action">
@@ -52,14 +52,33 @@
         <div class="col">
           <div class="card h-100">
             <a href="{% url 'product' product.product_id %}" class="card__body">
-              <img src="{{ product.foto.url }}" class="card-img-top" alt="image"/></a>            
+              <img src="{{ product.foto.url }}" class="card-img-top" alt="image" />
+            </a>
             <div class="card-body">
-              <a href="{% url 'product' product.product_id %}">   
-              <h5 class="card-title">{{ product.name }}</h5></a>
+              <a href="{% url 'product' product.product_id %}">
+                <h5 class="card-title">{{ product.name }}</h5>
+              </a>
 
               <p class="card-text">
                 {{ product.price }} € / {{ product.unit }}
               </p>
+              <div class="product_rating">
+                <span
+                  class="fa fa-star {% if product.average_rating > 0 %} checked {% endif %}"
+                ></span>
+                <span
+                  class="fa fa-star {% if product.average_rating > 1 %} checked {% endif %}"
+                ></span>
+                <span
+                  class="fa fa-star {% if product.average_rating > 2 %} checked {% endif %}"
+                ></span>
+                <span
+                  class="fa fa-star {% if product.average_rating > 3 %} checked {% endif %}"
+                ></span>
+                <span
+                  class="fa fa-star {% if product.average_rating > 4 %} checked {% endif %}"
+                ></span>
+              </div>
             </div>
             <div class="card-footer">
               <small class="text-muted">{{ product.farm.farm.name }}</small>
@@ -71,6 +90,20 @@
     </div>
   </div>
 </div>
+<script>
+  const rate = (rating, product_id) => {
+    fetch(`/rate/${product_id}/${rating}/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((rest) => {
+      window.location.reload();
+      // you may want to update the rating here
+      // to simplify stuff, I just reload the page
+    });
+  };
+</script>
 
 {% include 'pagination.html' with queryset=products custom_range=custom_range %}
 {% endblock content %}
