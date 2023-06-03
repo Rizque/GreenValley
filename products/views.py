@@ -34,9 +34,13 @@ def products(request):
 
 def product(request, pk):
     product = Product.objects.get(product_id=pk)
-    rating = Rating.objects.filter(
-        product=product, user=request.user.profile).first()
-    product.user_rating = rating.rating if rating else 0
+
+    if request.user.is_authenticated:
+        rating = Rating.objects.filter(
+            product=product, user=request.user.profile).first()
+        product.user_rating = rating.rating if rating else 0
+    else:
+        product.user_rating = 0
     return render(request, 'products/product.html', {'product': product})
 
 
