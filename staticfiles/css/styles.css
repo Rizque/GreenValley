@@ -215,6 +215,7 @@ button a {
 
 .prof_pic {
   max-height: 50em;
+  max-width: 100%;
 }
 
 .profile {
