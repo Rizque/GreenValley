@@ -51,6 +51,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
 
+
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -61,7 +65,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
+
 
 ROOT_URLCONF = 'green_valley.urls'
 
@@ -139,9 +145,22 @@ SOCIALACCOUNT_PROVIDERS = {
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
-
 SITE_ID = 5
 SOCIALACCOUNT_LOGIN_ON_GET = True
+
+SECURE_HSTS_SECONDS = 157680000  # 5 years in seconds
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_STYLE_SRC = ("'self'", "'unsafe-inline'")
+CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'")
+CSP_IMG_SRC = ("'self'",)
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+
+SECURE_BROWSER_XSS_FILTER = True
+
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = '/'
