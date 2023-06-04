@@ -82,6 +82,28 @@ For development version:
 - Click on a product to view its details, ratings, and reviews.
 - Submit reviews for products.
 
+
+
+## Technologies Used
+
+This Django project utilizes the following technologies:
+
+- Python: The programming language used for the development of the project.
+- Django: The web framework used for building the application.
+- Virtual Environment: A tool used to create isolated Python environments for project dependencies.
+- HTML: The markup language used for creating the structure and content of web pages.
+- CSS: The styling language used for applying visual styles to the web pages.
+- Bootstrap: Front-end framework used for creating responsive and visually appealing web pages.
+- JavaScript: The programming language used for client-side interactivity and dynamic behavior.
+- Google Maps: Mapping service used for generating maps and displaying location data.
+- SQLite: The relational database management system used for storing and retrieving data.
+- Django AllAuth: Authentication framework used for user authentication and registration, including integration with Google.
+- Amazon Web Services (AWS): Cloud services used for file storage and hosting assets.
+- AWS S3: Storage service provided by AWS for storing and retrieving static and media files.
+- Heroku: Cloud platform used for deploying and hosting web applications.
+- Git: Version control system used for tracking changes and collaboration among developers.
+
+
 ## Contributing
 Contributions to the Green Valley Django App are welcome! If you find any issues or would like to suggest improvements, please submit a GitHub issue or pull request.
 
