@@ -63,13 +63,17 @@ On macOS and Linux:
 
 The Green Valley Django App uses environment variables for configuration. Create a .env file in the root directory of the project and set the following variables:
 
-- SECRET_KEY=  // Django secret key used for cryptographic signing
-- DEBUG=       // Debug mode (True/False)
-- NAME=        // Name of the database
-- USER=        // Database username
-- PASSWORD=    // Database password
-- CLIENT_ID=   // Client ID (e.g., for third-party integrations)
-- SECRET=      // Client secret (e.g., for third-party integrations)
+For production version:
+
+- CLIENT_ID=                  Google client ID for authentication.
+- SECRET=                     Secret key for securing sensitive information.
+
+For development version:
+
+- SECRET_KEY=                 Secret key for Django application.
+- AWS_ACCESS_KEY_ID=          AWS access key ID for development.
+- AWS_SECRET_ACCESS_KEY=      AWS secret access key for development.
+- AWS_STORAGE_BUCKET_NAME=    Name of the AWS S3 bucket for file storage.
 
 ## Usage
 - Create a farm account to add and manage products.
@@ -77,6 +81,28 @@ The Green Valley Django App uses environment variables for configuration. Create
 - Use the search functionality to find specific products or farms.
 - Click on a product to view its details, ratings, and reviews.
 - Submit reviews for products.
+
+
+
+## Technologies Used
+
+This Django project utilizes the following technologies:
+
+- Python: The programming language used for the development of the project.
+- Django: The web framework used for building the application.
+- Virtual Environment: A tool used to create isolated Python environments for project dependencies.
+- HTML: The markup language used for creating the structure and content of web pages.
+- CSS: The styling language used for applying visual styles to the web pages.
+- Bootstrap: Front-end framework used for creating responsive and visually appealing web pages.
+- JavaScript: The programming language used for client-side interactivity and dynamic behavior.
+- Google Maps: Mapping service used for generating maps and displaying location data.
+- SQLite: The relational database management system used for storing and retrieving data.
+- Django AllAuth: Authentication framework used for user authentication and registration, including integration with Google.
+- Amazon Web Services (AWS): Cloud services used for file storage and hosting assets.
+- AWS S3: Storage service provided by AWS for storing and retrieving static and media files.
+- Heroku: Cloud platform used for deploying and hosting web applications.
+- Git: Version control system used for tracking changes and collaboration among developers.
+
 
 ## Contributing
 Contributions to the Green Valley Django App are welcome! If you find any issues or would like to suggest improvements, please submit a GitHub issue or pull request.
