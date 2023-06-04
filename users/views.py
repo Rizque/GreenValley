@@ -78,12 +78,12 @@ def selectGroup(request):
 
         if group_name == 'farm':
             Farm.objects.create(owner=profile)
-            # login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('edit-farm')
 
         elif group_name == 'client':
             Client.objects.create(person=profile)
-            # login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('edit-profile')
 
     return render(request, 'users/select_group.html')
