@@ -15,23 +15,11 @@ import os
 import dj_database_url
 import django_heroku
 from decouple import config
+from dotenv import load_dotenv, find_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
-
-ALLOWED_HOSTS = ['greenvalley.herokuapp.com', 'https://10.20.30.18',
-                 '127.0.0.1', 'greenvalley.pvg.edu.lv', 'https://greenvalley.pvg.edu.lv']
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 CSRF_TRUSTED_ORIGINS = ['https://10.20.30.18', 'https://127.0.0.1',
@@ -45,6 +33,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+
+    'django_extensions',
+    'storages',
+
 
     'crispy_forms',
     'crispy_bootstrap5',
@@ -91,31 +83,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'green_valley.wsgi.application'
 
+load_dotenv(find_dotenv())
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': config('NAME'),
+#         'USER': config('USER'),
+#         'PASSWORD': config('PASSWORD'),
+#         'HOST': 'localhost',
+#         'PORT': '5432',
 #     }
 # }
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('NAME'),
-        'USER': config('USER'),
-        'PASSWORD': config('PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+DATABASES = {'default': dj_database_url.config(
+    default='sqlite:///db.sqlite3', conn_max_age=600)}
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -161,6 +146,7 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = '/'
 
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -169,19 +155,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = '/static/'
-MEDIA_URL = '/images/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 20000000
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
@@ -193,4 +166,3 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_heroku.settings(locals())

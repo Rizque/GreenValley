@@ -16,8 +16,8 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=500, )
-    foto = models.ImageField(null=True, blank=False,
-                             default='default_profile.jpg',)
+    foto = models.ImageField(upload_to='profile_images/',
+                             null=True, blank=False, default='default_profile.jpg',)
     phone_regex = RegexValidator(
         regex=r'^\d{8}$'
     )
@@ -47,7 +47,7 @@ class Farm(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
 
-    foto = models.ImageField(null=True, blank=False,
+    foto = models.ImageField(upload_to='farm_images/', null=True, blank=False,
                              default='default_farm.jpg',)
     phone_regex = RegexValidator(
         regex=r'^\d{8}$'

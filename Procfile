@@ -1,1 +1,2 @@
-web: gunicorn green_valley.wsgi:application --log-file -
+web: python manage.py migrate && gunicorn green_valley.wsgi
+
