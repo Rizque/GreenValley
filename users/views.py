@@ -90,7 +90,10 @@ def selectGroup(request):
 
 
 def frontpage(request):
-    return render(request, 'users/frontpage.html')
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        return render(request, 'users/frontpage.html')
 
 
 @login_required(login_url='login')
