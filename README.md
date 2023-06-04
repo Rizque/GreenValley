@@ -63,13 +63,17 @@ On macOS and Linux:
 
 The Green Valley Django App uses environment variables for configuration. Create a .env file in the root directory of the project and set the following variables:
 
-- SECRET_KEY=  // Django secret key used for cryptographic signing
-- DEBUG=       // Debug mode (True/False)
-- NAME=        // Name of the database
-- USER=        // Database username
-- PASSWORD=    // Database password
-- CLIENT_ID=   // Client ID (e.g., for third-party integrations)
-- SECRET=      // Client secret (e.g., for third-party integrations)
+For production version:
+
+- CLIENT_ID=                  Google client ID for authentication.
+- SECRET=                     Secret key for securing sensitive information.
+
+For development version:
+
+- SECRET_KEY=                 Secret key for Django application.
+- AWS_ACCESS_KEY_ID=          AWS access key ID for development.
+- AWS_SECRET_ACCESS_KEY=      AWS secret access key for development.
+- AWS_STORAGE_BUCKET_NAME=    Name of the AWS S3 bucket for file storage.
 
 ## Usage
 - Create a farm account to add and manage products.
