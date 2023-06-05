@@ -103,6 +103,11 @@ This Django project utilizes the following technologies:
 - Heroku: Cloud platform used for deploying and hosting web applications.
 - Git: Version control system used for tracking changes and collaboration among developers.
 
+## Web Author
+
+The Green Valley Django App was developed by Ritvars Vjakse.
+
+For any inquiries or further information, please feel free to reach out via email at ritvarsvjakse@gmail.com.
 
 ## Contributing
 Contributions to the Green Valley Django App are welcome! If you find any issues or would like to suggest improvements, please submit a GitHub issue or pull request.
