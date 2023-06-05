@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.models import User, Group
@@ -45,11 +45,9 @@ def registerUser(request):
             user = form.save(commit=False)
             username = form.cleaned_data.get('username')
 
-            # Save the user without committing to the database
             user.username = user.username.lower()
             user.save()
 
-            # Render a form for the user to select their group
             return render(request, 'users/select_group.html', {'user_id': user.id})
 
     context = {'page': page, 'form': form}
@@ -101,7 +99,6 @@ def profile(request):
 
     profile = request.user.profile
     group = request.user.groups.all()[0].name
-    print(group)
     page = None
     if group == 'farm':
         page = 'farm'

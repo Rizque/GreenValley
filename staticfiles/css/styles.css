@@ -221,3 +221,19 @@ button a {
 .profile {
   font-size: 1.5em;
 }
+
+.btn-square {
+  width: 200px;
+  height: 200px;
+}
+
+.page-link {
+  background-color: white;
+  color: grey;
+}
+
+.page-item.active .page-link {
+  background-color: #343a40;
+  border-color: #343a40;
+  color: white;
+}
