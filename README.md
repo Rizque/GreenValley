@@ -70,6 +70,8 @@ For production version:
 
 For development version:
 
+- CLIENT_ID=                  Google client ID for authentication.
+- SECRET=                     Secret key for securing sensitive information.
 - SECRET_KEY=                 Secret key for Django application.
 - AWS_ACCESS_KEY_ID=          AWS access key ID for development.
 - AWS_SECRET_ACCESS_KEY=      AWS secret access key for development.
