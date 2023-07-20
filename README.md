@@ -14,7 +14,7 @@ The Green Valley Django App is a web application built with Django framework tha
 
 ### 1. Clone the repository:
 
-`git clone`
+`git clone https://github.com/Rizque/GreenValley`
 
 ### 2. Change to the project directory:
 
